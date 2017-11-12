@@ -55,31 +55,41 @@
 						<section>
 							<h2>공지사항</h2>
 						</section>
+						<section>
+							<c:choose>
+								<c:when test="${view ne null}">
+									<table class="table4_11">
+										<tbody>
+											<tr>
+												<th>번호</th>
+												<th>제목</th>
+												<th>작성자</th>
+												<th>작성일</th>
+											</tr>
+											<tr>
+												<td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
+											</tr>
+											<tr>
+												<td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
+											</tr>
+												<tr>
+												<td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
+											</tr>
+											<tr>
+												<td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
+											</tr>
+										</tbody>
+									</table>					
+								</c:when>
+								<c:otherwise>
+									공지사항이 없습니다.
+								</c:otherwise>
+							</c:choose>	
+						</section>
+						<section>
+							<a href="#" class="button">등록</a>
+						</section>
 					</div>
-				</div>
-				<div class="row main-row">
-					<table class="table4_11">
-						<tbody>
-							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>작성일</th>
-							</tr>
-							<tr>
-								<td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-							</tr>
-							<tr>
-								<td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-							</tr>
-								<tr>
-								<td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-							</tr>
-							<tr>
-								<td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-							</tr>
-						</tbody>
-					</table>
 				</div>
 			</div>
 		</div>
