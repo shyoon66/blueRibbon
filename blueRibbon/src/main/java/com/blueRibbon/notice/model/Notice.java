@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="TB_NOTICE")
@@ -27,6 +29,7 @@ public class Notice {
 	private String user_id;
 	
 	@Column(name="CREATE_DT")
+	@Temporal(TemporalType.DATE)
 	private Date create_dt;
 	
 	public Notice() {}

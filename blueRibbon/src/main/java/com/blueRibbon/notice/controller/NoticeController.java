@@ -20,9 +20,7 @@ public class NoticeController {
 
 	@RequestMapping("/")
 	public String notice(Model model) throws Exception {
-		//System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@ list = " + noticeDao.findAll());
-		logger.debug("@@@@@@@@@@@@@@@@@@ list = {}", noticeDao.findAll());
-		model.addAttribute("view", noticeDao.findAll());
+		model.addAttribute("list", noticeDao.findAll());
 		return "/notice/notice";
 	}
 	

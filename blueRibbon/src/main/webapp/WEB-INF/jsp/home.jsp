@@ -1,225 +1,212 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="common/staticImport.jsp" %>
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<link rel="stylesheet" href="assets/css/main.css" />
-<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/home/home.js"></script>
-<title>블루리본 어학원에 오신 것을 환영합니다.</title>
-</head>
-	<body>
-		<jsp:include page="common/header.jsp"></jsp:include>
-		<div id="banner-wrapper">
-			<div class="container">
-				<div id="banner">
-					<h2>Put something cool here!</h2>
-					<span>And put something almost as cool here, but a bit longer ...</span>
-				</div>
-			</div>
-		</div>
-		<div id="main">
-			<div class="container">
-				<div class="row main-row">
-					<div class="4u 12u(mobile)">
-						<section>
-							<h2>Welcome to Minimaxing!</h2>
-							<p>This is <strong>Minimaxing</strong>, a fully responsive HTML5 site template designed by <a href="http://twitter.com/ajlkn">AJ</a> and released for free by <a href="http://html5up.net">HTML5 UP</a>. It features
-							a simple, lightweight design, solid HTML5 and CSS3 code, and full responsive support for desktop, tablet, and mobile displays.</p>
-							<footer class="controls">
-								<a href="http://html5up.net" class="button">More cool designs ...</a>
-							</footer>
-						</section>
-					</div>
-					<div class="4u 12u(mobile)">
-						<section>
-							<h2>Who are you guys?</h2>
-							<ul class="small-image-list">
-								<li>
-									<a href="#"><img src="images/pic2.jpg" alt="" class="left" /></a>
-									<h4>Jane Anderson</h4>
-									<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo facilisis amet quis.</p>
-								</li>
-								<li>
-									<a href="#"><img src="images/pic1.jpg" alt="" class="left" /></a>
-									<h4>James Doe</h4>
-									<p>Vitae magna eget odio amet mollis justo facilisis amet quis. Sed sagittis consequat.</p>
-								</li>
-							</ul>
-						</section>
-					</div>
-					<div class="4u 12u(mobile)">
-						<section>
-							<h2>How about some links?</h2>
-							<div>
-								<div class="row">
-									<div class="6u 12u(mobile)">
-										<ul class="link-list">
-											<li><a href="#">Sed neque nisi consequat</a></li>
-											<li><a href="#">Dapibus sed mattis blandit</a></li>
-											<li><a href="#">Quis accumsan lorem</a></li>
-											<li><a href="#">Suspendisse varius ipsum</a></li>
-											<li><a href="#">Eget et amet consequat</a></li>
-										</ul>
-									</div>
-									<div class="6u 12u(mobile)">
-										<ul class="link-list">
-											<li><a href="#">Quis accumsan lorem</a></li>
-											<li><a href="#">Sed neque nisi consequat</a></li>
-											<li><a href="#">Eget et amet consequat</a></li>
-											<li><a href="#">Dapibus sed mattis blandit</a></li>
-											<li><a href="#">Vitae magna sed dolore</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</section>
-					</div>
-				</div>
-				<div class="row main-row">
-					<div class="6u 12u(mobile)">
-						<section>
-							<h2>An assortment of pictures and text</h2>
-							<p>Duis neque nisi, dapibus sed mattis quis, rutrum et accumsan.
-							Suspendisse nibh. Suspendisse vitae magna eget odio amet mollis
-							justo facilisis quis. Sed sagittis mauris amet tellus gravida
-							lorem ipsum dolor sit amet consequat blandit lorem ipsum dolor
-							sit amet consequat sed dolore.</p>
-							<ul class="big-image-list">
-								<li>
-									<a href="#"><img src="images/pic3.jpg" alt="" class="left" /></a>
-									<h3>Magna Gravida Dolore</h3>
-									<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-									facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-									Maecenas eu arcu purus, phasellus fermentum elit.</p>
-								</li>
-								<li>
-									<a href="#"><img src="images/pic4.jpg" alt="" class="left" /></a>
-									<h3>Magna Gravida Dolore</h3>
-									<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-									facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-									Maecenas eu arcu purus, phasellus fermentum elit.</p>
-								</li>
-								<li>
-									<a href="#"><img src="images/pic5.jpg" alt="" class="left" /></a>
-									<h3>Magna Gravida Dolore</h3>
-									<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-									facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-									Maecenas eu arcu purus, phasellus fermentum elit.</p>
-								</li>
-							</ul>
-						</section>
-					</div>
-					<div class="6u 12u(mobile)">
 
-						<article class="blog-post">
-							<h2>Just another blog post</h2>
-							<a class="comments" href="#">33 comments</a>
-							<a href="#"><img src="images/pic6.jpg" alt="" class="top blog-post-image" /></a>
-							<h3>Magna Gravida Dolore</h3>
-							<p>Aenean non massa sapien. In hac habitasse platea dictumst.
-							Maecenas sodales purus et nulla sodales aliquam. Aenean ac
-							porttitor metus. In hac habitasse platea dictumst. Phasellus
-							blandit turpis in leo scelerisque mollis. Nulla venenatis
-							ipsum nec est porta rhoncus. Mauris sodales sed pharetra
-							nisi nec consectetur. Cras elit magna, hendrerit nec
-							consectetur in, sollicitudin vitae justo. Cras amet aliquet
-							Aliquam ligula turpis, feugiat id fermentum malesuada,
-							rutrum eget turpis. Mauris sodales sed pharetra nisi nec
-							consectetur. Cras elit magna, hendrerit nec consectetur
-							in sollicitudin vitae.</p>
-							<footer class="controls">
-								<a href="#" class="button">Continue Reading</a>
-							</footer>
-						</article>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="footer-wrapper">
-			<div class="container">
-				<div class="row">
-					<div class="8u 12u(mobile)">
+	<jsp:include page="common/header.jsp"/>
 
-						<section>
-							<h2>How about a truckload of links?</h2>
-							<div>
-								<div class="row">
-									<div class="3u 12u(mobile)">
-										<ul class="link-list">
-											<li><a href="#">Sed neque nisi consequat</a></li>
-											<li><a href="#">Dapibus sed mattis blandit</a></li>
-											<li><a href="#">Quis accumsan lorem</a></li>
-											<li><a href="#">Suspendisse varius ipsum</a></li>
-											<li><a href="#">Eget et amet consequat</a></li>
-										</ul>
-									</div>
-									<div class="3u 12u(mobile)">
-										<ul class="link-list">
-											<li><a href="#">Quis accumsan lorem</a></li>
-											<li><a href="#">Sed neque nisi consequat</a></li>
-											<li><a href="#">Eget et amet consequat</a></li>
-											<li><a href="#">Dapibus sed mattis blandit</a></li>
-											<li><a href="#">Vitae magna sed dolore</a></li>
-										</ul>
-									</div>
-									<div class="3u 12u(mobile)">
-										<ul class="link-list">
-											<li><a href="#">Sed neque nisi consequat</a></li>
-											<li><a href="#">Dapibus sed mattis blandit</a></li>
-											<li><a href="#">Quis accumsan lorem</a></li>
-											<li><a href="#">Suspendisse varius ipsum</a></li>
-											<li><a href="#">Eget et amet consequat</a></li>
-										</ul>
-									</div>
-									<div class="3u 12u(mobile)">
-										<ul class="link-list">
-											<li><a href="#">Quis accumsan lorem</a></li>
-											<li><a href="#">Sed neque nisi consequat</a></li>
-											<li><a href="#">Eget et amet consequat</a></li>
-											<li><a href="#">Dapibus sed mattis blandit</a></li>
-											<li><a href="#">Vitae magna sed dolore</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</section>
-					</div>
-					<div class="4u 12u(mobile)">
+    <header>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div class="carousel-item active" style="background-image: url(image/main/pic1.jpg)">
+<!--             <div class="carousel-caption d-none d-md-block">
+              <h3>First Slide</h3>
+              <p>This is a description for the first slide.</p>
+            </div> -->
+          </div>
+          <!-- Slide Two - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Second Slide</h3>
+              <p>This is a description for the second slide.</p>
+            </div>
+          </div>
+          <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Third Slide</h3>
+              <p>This is a description for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </header>
 
-						<section>
-							<h2>Something of interest</h2>
-							<p>Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed.
-							Suspendisse eu varius nibh. Suspendisse vitae magna eget odio amet
-							mollis justo facilisis quis. Sed sagittis mauris amet tellus gravida
-							lorem ipsum dolor sit amet consequat blandit.</p>
-							<footer class="controls">
-								<a href="#" class="button">Oh, please continue ....</a>
-							</footer>
-						</section>
+    <!-- Page Content -->
+    <div class="container">
 
-					</div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/skel.min.js"></script>
-		<script src="assets/js/skel-viewport.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-		<script src="assets/js/main.js"></script>
-	</body>
+      <h1 class="my-4">Welcome to Modern Business</h1>
+
+      <!-- Marketing Icons Section -->
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <h4 class="card-header">Card Title</h4>
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <h4 class="card-header">Card Title</h4>
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <h4 class="card-header">Card Title</h4>
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- Portfolio Section -->
+      <h2>Portfolio Heading</h2>
+
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Project One</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Project Two</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Project Three</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Project Four</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Project Five</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Project Six</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- Features Section -->
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>Modern Business Features</h2>
+          <p>The Modern Business template by Start Bootstrap includes:</p>
+          <ul>
+            <li>
+              <strong>Bootstrap v4</strong>
+            </li>
+            <li>jQuery</li>
+            <li>Font Awesome</li>
+            <li>Working contact form with validation</li>
+            <li>Unstyled page elements for easy customization</li>
+          </ul>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+        </div>
+        <div class="col-lg-6">
+          <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <!-- Call to Action Section -->
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
