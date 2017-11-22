@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<c:choose>
-					<c:when test="${fn:length(list) > 0}">
+					<c:when test="${fn:length(postPage) > 0}">
 						<div class="container table-responsive">
 							<table class="table table-sm table-hover">
 								<thead>
@@ -27,19 +27,19 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach items="${list}" var="notice">
+								<c:forEach var="post" items="${postPage}">
 									<tr>
 										<td></td>
-										<td>${notice.title}</td>
-										<td>${notice.user_id}</td>
-										<td>${notice.create_dt}</td>
+										<td>${post.title}</td>
+										<td>${post.user_id}</td>
+										<td>${post.create_dt}</td>
 									</tr>
 								</c:forEach>	
 								</tbody>
 							</table>
 						</div>
 					</c:when>
-					<c:otherwise>
+ 					<c:otherwise>
 						공지사항이 없습니다.
 					</c:otherwise>
 				</c:choose>

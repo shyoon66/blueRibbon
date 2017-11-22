@@ -17,7 +17,7 @@ public class Notice {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long notice_id;
+	private int notice_id;
 	
 	@Column(name="TITLE")
 	private String title;
@@ -34,11 +34,11 @@ public class Notice {
 	
 	public Notice() {}
 
-	public Long getNotice_id() {
+	public int getNotice_id() {
 		return notice_id;
 	}
 
-	public void setNotice_id(Long notice_id) {
+	public void setNotice_id(int notice_id) {
 		this.notice_id = notice_id;
 	}
 
