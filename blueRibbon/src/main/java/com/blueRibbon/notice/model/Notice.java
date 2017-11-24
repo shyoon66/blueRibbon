@@ -17,7 +17,7 @@ public class Notice {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int notice_id;
+	private int noticeId;
 	
 	@Column(name="TITLE")
 	private String title;
@@ -26,20 +26,20 @@ public class Notice {
 	private String contents;
 	
 	@Column(name="USER_ID")
-	private String user_id;
+	private String userId;
 	
 	@Column(name="CREATE_DT")
 	@Temporal(TemporalType.DATE)
-	private Date create_dt;
+	private Date createDt;
 	
 	public Notice() {}
 
-	public int getNotice_id() {
-		return notice_id;
+	public int getNoticeId() {
+		return noticeId;
 	}
 
-	public void setNotice_id(int notice_id) {
-		this.notice_id = notice_id;
+	public void setNoticeId(int noticeId) {
+		this.noticeId = noticeId;
 	}
 
 	public String getTitle() {
@@ -58,20 +58,20 @@ public class Notice {
 		this.contents = contents;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public Date getCreate_dt() {
-		return create_dt;
+	public Date getCreateDt() {
+		return createDt;
 	}
 
-	public void setCreate_dt(Date create_dt) {
-		this.create_dt = create_dt;
+	public void setCreateDt(Date createDt) {
+		this.createDt = createDt;
 	}
 	
 }

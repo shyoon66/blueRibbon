@@ -31,7 +31,7 @@
 	          <a class="nav-link" href="#">어학원소개</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="/notice/">공지사항</a>
+	          <a class="nav-link" href="/notice/list?page=0&size=${pagenum}&sort=createDt,desc">공지사항</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="#">Contact</a>

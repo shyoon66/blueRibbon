@@ -1,9 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../common/staticImport.jsp" %>
 
+<c:url var="urlNoticeList" value="/notice/list" />
+
 <jsp:include page="../common/header.jsp" />
 
+<!-- Bootstrap core JavaScript -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../js/notice/notice.js"></script>
+
 <body>
+	<input type="hidden" id="page" name="page" value="${view.page}" />
+	<input type="hidden" id="pagenum" name="pagenum" value="${view.pagenum}" />
+	<input type="hidden" id="divNum" name="divNum" value="${view.divNum}" />
+	<input type="hidden" id="startPageNum" name="startPageNum" value="1" />
+	<input type="hidden" id="endPageNum" name="startPageNum" value="${view.totalPages}" />
+
 	<!-- Page Content -->
 	<div class="container">
 		<!-- Page Heading/Breadcrumbs -->
@@ -15,7 +28,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<c:choose>
-					<c:when test="${fn:length(postPage) > 0}">
+					<c:when test="${fn:length(view.list) > 0}">
 						<div class="container table-responsive">
 							<table class="table table-sm table-hover">
 								<thead>
@@ -27,14 +40,14 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach var="post" items="${postPage}">
+								<c:forEach var="notice" items="${view.list}" varStatus="status">
 									<tr>
-										<td></td>
-										<td>${post.title}</td>
-										<td>${post.user_id}</td>
-										<td>${post.create_dt}</td>
+										<td>${((view.page + 1) * view.numOfElements) - (view.numOfElements - status.index) + 1}</td>
+										<td>${notice.title}</td>
+										<td>${notice.userId}</td>
+										<td>${notice.createDt}</td>
 									</tr>
-								</c:forEach>	
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -50,11 +63,13 @@
 
 		<!-- Pagination -->
 		<ul class="pagination justify-content-center">
-			<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+			<li id="previous" class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+		
+			<c:forEach var="i" begin="${view.startPage}" step="1" end="${view.endPage}">
+				<li class="page-item"><a class="page-link pagenum" href="${urlNoticeList}?page=${i - 1}&size=${view.pagenum}&sort=createDt,desc">${i}</a></li>
+			</c:forEach>
+			
+			<li id="next" class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
 		</ul>
 	</div>
 	<!-- /.container -->
@@ -62,14 +77,9 @@
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2017</p>
+			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
 		</div>
 		<!-- /.container -->
 	</footer>
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="../vendor/jquery/jquery.min.js"></script>
-	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
