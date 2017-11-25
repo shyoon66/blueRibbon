@@ -14,12 +14,12 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
 	
-	@Value("${pagenum}")
-	private int pagenum;
+	@Value("${page.size}")
+	private int pageSize;
 
 	@RequestMapping("/")
 	public String home(Model model) throws Exception {
-		model.addAttribute("pagenum", pagenum);
+		model.addAttribute("pageSize", pageSize);
 		return "home";
 	}
 }

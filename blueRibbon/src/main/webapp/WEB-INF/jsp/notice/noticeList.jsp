@@ -2,17 +2,18 @@
 <%@ include file="../common/staticImport.jsp" %>
 
 <c:url var="urlNoticeList" value="/notice/list" />
+<c:url var="urlNoticeView" value="/notice/view" />
 
 <jsp:include page="../common/header.jsp" />
 
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../js/notice/notice.js"></script>
+<script src="../js/notice/noticeList.js"></script>
 
 <body>
 	<input type="hidden" id="page" name="page" value="${view.page}" />
-	<input type="hidden" id="pagenum" name="pagenum" value="${view.pagenum}" />
+	<input type="hidden" id="pageSize" name="pageSize" value="${view.pageSize}" />
 	<input type="hidden" id="divNum" name="divNum" value="${view.divNum}" />
 	<input type="hidden" id="startPageNum" name="startPageNum" value="1" />
 	<input type="hidden" id="endPageNum" name="startPageNum" value="${view.totalPages}" />
@@ -43,7 +44,7 @@
 								<c:forEach var="notice" items="${view.list}" varStatus="status">
 									<tr>
 										<td>${((view.page + 1) * view.numOfElements) - (view.numOfElements - status.index) + 1}</td>
-										<td>${notice.title}</td>
+										<td><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&sort=createDt,desc">${notice.title}</a></td>
 										<td>${notice.userId}</td>
 										<td>${notice.createDt}</td>
 									</tr>
@@ -66,20 +67,18 @@
 			<li id="previous" class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
 		
 			<c:forEach var="i" begin="${view.startPage}" step="1" end="${view.endPage}">
-				<li class="page-item"><a class="page-link pagenum" href="${urlNoticeList}?page=${i - 1}&size=${view.pagenum}&sort=createDt,desc">${i}</a></li>
+				<li class="page-item"><a class="page-link pagenum" href="${urlNoticeList}?page=${i - 1}&size=${view.pageSize}&sort=createDt,desc">${i}</a></li>
 			</c:forEach>
 			
 			<li id="next" class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
 		</ul>
+		
+		<div class="row">
+			<a href="#" id="insertBtn" class="btn btn-primary">글쓰기</a>
+		</div>
 	</div>
 	<!-- /.container -->
-
-	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-		</div>
-		<!-- /.container -->
-	</footer>
+	
+	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

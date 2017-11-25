@@ -16,6 +16,10 @@ $(document).ready(function() {
 			$(this).parent().addClass('active');
 		}
 	});
+	
+	$('#insertBtn').on('click', function(e) {
+		location.href = '/notice/insert';
+	});
 });
 
 function init() {
@@ -26,8 +30,8 @@ function init() {
 function selectCurrentPage() {
 	var page = parseInt($('#page').val());
 	var divNum = parseInt($('#divNum').val());
-	var pagenum = parseInt($('#pagenum').val());
-	var index = page - (divNum * pagenum) + 1;
+	var pageSize = parseInt($('#pageSize').val());
+	var index = page - (divNum * pageSize) + 1;
 	
 	if(index == 0) {
 		index = page;
@@ -47,7 +51,7 @@ function pageBtn() {
 		$previous.children().attr('href', '#');
 	} else {
 		$previous.removeClass('disabled');	
-		var url = '/notice/list?page=' + (startPageNum - 2) + '&size=' + $('#pagenum').val() + '&sort=createDt,desc';
+		var url = '/notice/list?page=' + (startPageNum - 2) + '&size=' + $('#pageSize').val() + '&sort=createDt,desc';
 		$previous.children().attr('href', url);
 	}
 	
@@ -60,7 +64,7 @@ function pageBtn() {
 		$next.children().attr('href', '#');
 	} else {
 		$next.removeClass('disabled');
-		var url = '/notice/list?page=' + endPageNum + '&size=' + $('#pagenum').val() + '&sort=createDt,desc';
+		var url = '/notice/list?page=' + endPageNum + '&size=' + $('#pageSize').val() + '&sort=createDt,desc';
 		$next.children().attr('href', url);
 	}
 }

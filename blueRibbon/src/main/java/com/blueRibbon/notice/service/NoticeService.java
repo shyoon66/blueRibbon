@@ -26,8 +26,8 @@ public class NoticeService {
 	@Autowired
 	private NoticeDao noticeDao;
 	
-	@Value("${pagenum}")
-	private int pagenum;
+	@Value("${page.size}")
+	private int pageSize;
 	
 	public Map<String, Object> getNoticeList(Pageable pageable) throws Exception {
 		Page<Notice> postPage = noticeDao.findAll(pageable);
@@ -35,8 +35,8 @@ public class NoticeService {
 		noticeMap.put("list", postPage.getContent());
 		noticeMap.put("page", postPage.getNumber());
 		noticeMap.put("numOfElements", postPage.getNumberOfElements());
-		noticeMap.put("pagenum", pagenum);
-		noticeMap.put("divNum", postPage.getNumber() / pagenum);
+		noticeMap.put("pageSize", pageSize);
+		noticeMap.put("divNum", postPage.getNumber() / pageSize);
 		noticeMap.put("totalPages", postPage.getTotalPages());
 		noticeMap.putAll(getstartAndEndPageNum(postPage.getNumber() + 1, postPage.getTotalPages()));
 	
@@ -44,25 +44,25 @@ public class NoticeService {
 	}
 	
 	private Map<String, Integer> getstartAndEndPageNum(int page, int totalPage) throws Exception {
-		int div = page / pagenum;
+		int div = page / pageSize;
 		int startPage = 0;
 		int endPage = 0;
 		Map<String, Integer> pageMap = new HashMap<String, Integer>();
 		
-		if(totalPage <= pagenum) {
+		if(totalPage <= pageSize) {
 			startPage = page - (page - 1);
 			endPage = page;
-		} else if(page - (pagenum * div) == 0) {
+		} else if(page - (pageSize * div) == 0) {
 			if((div - 1) == 0) {
 				startPage = page - (page - 1);
 			} else {
-				startPage = page - (pagenum - 1);
+				startPage = page - (pageSize - 1);
 			}
 			
 			endPage = page;
 		} else {
-			startPage = pagenum * div + 1;
-			endPage = pagenum * (div + 1);
+			startPage = pageSize * div + 1;
+			endPage = pageSize * (div + 1);
 			
 			if(totalPage <= endPage) {
 				endPage = totalPage;
@@ -73,5 +73,9 @@ public class NoticeService {
 		pageMap.put("endPage", endPage);
 		
 		return pageMap;
+	}
+	
+	public void insertNotice(Notice notice) throws Exception {
+		noticeDao.save(notice);
 	}
 }
