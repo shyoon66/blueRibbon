@@ -38,12 +38,12 @@ public class NoticeService {
 		noticeMap.put("pageSize", pageSize);
 		noticeMap.put("divNum", postPage.getNumber() / pageSize);
 		noticeMap.put("totalPages", postPage.getTotalPages());
-		noticeMap.putAll(getstartAndEndPageNum(postPage.getNumber() + 1, postPage.getTotalPages()));
+		noticeMap.putAll(getStartAndEndPageNum(postPage.getNumber() + 1, postPage.getTotalPages()));
 	
 		return noticeMap;
 	}
 	
-	private Map<String, Integer> getstartAndEndPageNum(int page, int totalPage) throws Exception {
+	private Map<String, Integer> getStartAndEndPageNum(int page, int totalPage) throws Exception {
 		int div = page / pageSize;
 		int startPage = 0;
 		int endPage = 0;
@@ -51,7 +51,7 @@ public class NoticeService {
 		
 		if(totalPage <= pageSize) {
 			startPage = page - (page - 1);
-			endPage = page;
+			endPage = totalPage;
 		} else if(page - (pageSize * div) == 0) {
 			if((div - 1) == 0) {
 				startPage = page - (page - 1);

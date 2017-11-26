@@ -47,4 +47,10 @@ public class NoticeController {
 		noticeService.insertNotice(notice);
 		return "/notice/noticeInsert";
 	}
+	
+	@RequestMapping("/update")
+	public String noticeUpdate(Model model, int noticeId) throws Exception {
+		model.addAttribute("view", noticeDao.findOne(noticeId));
+		return "/notice/noticeUpdate";
+	}
 }

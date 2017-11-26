@@ -35,7 +35,7 @@
 			</div>
 			<hr>
 			<div class="col-md-12">
-				<div id="summernote">Hello Summernote</div>
+				<div id="summernote"></div>
 			</div>
 		</div>
 		<div class="row">

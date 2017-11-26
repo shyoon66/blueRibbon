@@ -8,12 +8,16 @@
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../js/notice/noticeView.js"></script>
+
+<!-- include summernote css/js-->
+<link href="../summernote/summernote-bs4.css" rel="stylesheet">
+<script src="../summernote/summernote-bs4.js"></script>
+<script src="../summernote/lang/summernote-ko-KR.js"></script>
+
+<script src="../js/notice/noticeInsert.js"></script>
 
 <body>
-	<input type="hidden" id="noticeId" name="noticeId" value="${param.noticeId}" />
 	<input type="hidden" id="page" name="page" value="${param.page}" />
-	<input type="hidden" id="pageSize" name="pageSize" value="${param.size}" />
 
 	<!-- Page Content -->
 	<div class="container">
@@ -24,18 +28,18 @@
 		<hr>	
 		<div class="row">
 			<div class="col-md-12">
-				글쓴이: <input type="text" id="userId" name="userId" value="${view.userId}" readonly="readonly"/>
+				글쓴이: <input type="text" id="userId" name="userId" value="admin" readonly="readonly"/>
 			</div>
 			<div class="col-md-12">
-				제목: <input type="text" id="title" name="title" value="${view.title}" readonly="readonly"/>
+				제목: <input type="text" id="title" name="title" value="${view.title}"/>
 			</div>
 			<hr>
 			<div class="col-md-12">
-				<textarea rows="15" cols="150" readonly="readonly">${view.contents}</textarea>
+				<div id="summernote">${view.contents}</div>
 			</div>
 		</div>
 		<div class="row">
-			<a href="#" id="updateBtn" class="btn btn-primary">수정</a>
+			<a href="#" id="updateBtn" class="btn btn-primary">저장</a>
 			<a href="#" id="listBtn" class="btn btn-primary">목록</a>
 		</div>
 	</div>

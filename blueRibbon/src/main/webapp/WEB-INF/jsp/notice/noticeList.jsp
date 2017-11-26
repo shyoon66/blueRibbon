@@ -15,8 +15,8 @@
 	<input type="hidden" id="page" name="page" value="${view.page}" />
 	<input type="hidden" id="pageSize" name="pageSize" value="${view.pageSize}" />
 	<input type="hidden" id="divNum" name="divNum" value="${view.divNum}" />
-	<input type="hidden" id="startPageNum" name="startPageNum" value="1" />
-	<input type="hidden" id="endPageNum" name="startPageNum" value="${view.totalPages}" />
+	<input type="hidden" id="startPageNum" name="startPageNum" value="${view.startPage}" />
+	<input type="hidden" id="endPageNum" name="endPageNum" value="${view.endPageNum}" />
 
 	<!-- Page Content -->
 	<div class="container">
@@ -43,8 +43,8 @@
 								<tbody>
 								<c:forEach var="notice" items="${view.list}" varStatus="status">
 									<tr>
-										<td>${((view.page + 1) * view.numOfElements) - (view.numOfElements - status.index) + 1}</td>
-										<td><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&sort=createDt,desc">${notice.title}</a></td>
+										<td>${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</td>
+										<td><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc">${notice.title}</a></td>
 										<td>${notice.userId}</td>
 										<td>${notice.createDt}</td>
 									</tr>
