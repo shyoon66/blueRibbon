@@ -12,7 +12,7 @@ import com.blueRibbon.notice.controller.NoticeController;
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Value("${page.size}")
 	private int pageSize;

@@ -36,6 +36,7 @@
 		</div>
 		<div class="row">
 			<a href="#" id="updateBtn" class="btn btn-primary">수정</a>
+			<a href="#" id="deleteBtn" class="btn btn-primary">삭제</a>
 			<a href="#" id="listBtn" class="btn btn-primary">목록</a>
 		</div>
 	</div>

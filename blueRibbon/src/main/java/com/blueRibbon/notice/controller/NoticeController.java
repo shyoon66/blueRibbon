@@ -1,5 +1,8 @@
 package com.blueRibbon.notice.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.blueRibbon.notice.dao.NoticeDao;
 import com.blueRibbon.notice.model.Notice;
@@ -42,15 +48,25 @@ public class NoticeController {
 		return "/notice/noticeInsert";
 	}
 	
-	@RequestMapping("/insertProc")
-	public String noticeInsertProc(Model model, @ModelAttribute Notice notice) throws Exception {
+	@RequestMapping(value = "/insertProc.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> noticeInsertProc(Model model, @ModelAttribute Notice notice) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("test", "test");
+		model.addAttribute("test", "test");
 		noticeService.insertNotice(notice);
-		return "/notice/noticeInsert";
+		logger.debug("@@@@@@@@@@@@@@@@ model = " + model);
+		return map;
 	}
 	
 	@RequestMapping("/update")
 	public String noticeUpdate(Model model, int noticeId) throws Exception {
 		model.addAttribute("view", noticeDao.findOne(noticeId));
 		return "/notice/noticeUpdate";
+	}
+	
+	@RequestMapping(value = "/deleteProc.json", method = RequestMethod.POST)
+	public void noticeDeleteProc(Model model, int noticeId) throws Exception {
+		noticeService.deleteNotice(model, noticeId);
 	}
 }

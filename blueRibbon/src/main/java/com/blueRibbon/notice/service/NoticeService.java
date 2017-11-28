@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
-import com.blueRibbon.notice.controller.NoticeController;
 import com.blueRibbon.notice.dao.NoticeDao;
 import com.blueRibbon.notice.model.Notice;
 
@@ -21,7 +21,7 @@ import com.blueRibbon.notice.model.Notice;
 @Transactional
 public class NoticeService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(NoticeService.class);
 	
 	@Autowired
 	private NoticeDao noticeDao;
@@ -39,8 +39,6 @@ public class NoticeService {
 		noticeMap.put("divNum", postPage.getNumber() / pageSize);
 		noticeMap.put("totalPages", postPage.getTotalPages());
 		noticeMap.putAll(getStartAndEndPageNum(postPage.getNumber() + 1, postPage.getTotalPages()));
-		
-		logger.debug("@@@@@@@@@@@@@@@@@@@@@@@@@2 totalPages = " + postPage.getTotalPages());
 	
 		return noticeMap;
 	}
@@ -74,13 +72,21 @@ public class NoticeService {
 		pageMap.put("startPage", startPage);
 		pageMap.put("endPage", endPage);
 		
-		logger.debug("@@@@@@@@@@@@@@@22 startPage = " + startPage);
-		logger.debug("@@@@@@@@@@@@@@@22 endPage = " + endPage);
-		
 		return pageMap;
 	}
 	
 	public void insertNotice(Notice notice) throws Exception {
 		noticeDao.save(notice);
+	}
+	
+	public void deleteNotice(Model model, int noticeId) throws Exception {
+		try {
+			noticeDao.delete(noticeId);
+			model.addAttribute("success", true);
+			model.addAttribute("rMsg", "삭제가 성공 했습니다.");
+		} catch(Exception e) {
+			model.addAttribute("success", false);
+			model.addAttribute("rMsg", "삭제가 실패 했습니다.");
+		}
 	}
 }

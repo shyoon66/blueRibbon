@@ -41,7 +41,7 @@ function valid() {
 }
 
 function insert() {
-	var url = '/notice/insertProc';
+	var url = '/notice/insertProc.json';
 	var params = {
 		title: $('#title').val(),
 		contents: $('#summernote').summernote('code'),
@@ -49,6 +49,7 @@ function insert() {
 	};
 	
 	$.post(url, params, function(rJson) {
+		console.log(rJson);
 /*		if(rJson.success) {
 			//alert('')
 		}*/
