@@ -2,9 +2,7 @@
  * 
  */
 
-$(document).ready(function() {
-	init();
-	
+$(document).ready(function() {	
 	$('a.page-link').on('click', function(e) {
 		var $li = $(this).closest('ul').children();
 		
@@ -12,14 +10,16 @@ $(document).ready(function() {
 			$(elem).removeClass('active');
 		});
 		
-		if($(this).hasClass('pagenum')) {
+/*		if($(this).hasClass('pagenum')) {
 			$(this).parent().addClass('active');
-		}
+		}*/
 	});
 	
 	$('#insertBtn').on('click', function(e) {
 		location.href = '/notice/insert';
 	});
+	
+	init();
 });
 
 function init() {
@@ -46,7 +46,7 @@ function pageBtn() {
 	var startPageNum = parseInt($(startPageLi).children().text());
 	var $previous = $('#previous');
 	
-	if($('#startPageNum').val() == startPageNum) {
+	if(parseInt($('#firstPage').val()) == startPageNum) {
 		$previous.addClass('disabled');
 		$previous.children().attr('href', '#');
 	} else {
@@ -59,7 +59,7 @@ function pageBtn() {
 	var endPageNum = parseInt($(endPageLi).children().text());
 	var $next = $('#next');
 	
-	if($('#endPageNum').val() <= endPageNum) {
+	if(parseInt($('#totalPages').val()) == endPageNum) {
 		$next.addClass('disabled');
 		$next.children().attr('href', '#');
 	} else {

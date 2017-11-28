@@ -39,6 +39,8 @@ public class NoticeService {
 		noticeMap.put("divNum", postPage.getNumber() / pageSize);
 		noticeMap.put("totalPages", postPage.getTotalPages());
 		noticeMap.putAll(getStartAndEndPageNum(postPage.getNumber() + 1, postPage.getTotalPages()));
+		
+		logger.debug("@@@@@@@@@@@@@@@@@@@@@@@@@2 totalPages = " + postPage.getTotalPages());
 	
 		return noticeMap;
 	}
@@ -71,6 +73,9 @@ public class NoticeService {
 		
 		pageMap.put("startPage", startPage);
 		pageMap.put("endPage", endPage);
+		
+		logger.debug("@@@@@@@@@@@@@@@22 startPage = " + startPage);
+		logger.debug("@@@@@@@@@@@@@@@22 endPage = " + endPage);
 		
 		return pageMap;
 	}

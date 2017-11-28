@@ -15,8 +15,10 @@
 	<input type="hidden" id="page" name="page" value="${view.page}" />
 	<input type="hidden" id="pageSize" name="pageSize" value="${view.pageSize}" />
 	<input type="hidden" id="divNum" name="divNum" value="${view.divNum}" />
-	<input type="hidden" id="startPageNum" name="startPageNum" value="${view.startPage}" />
-	<input type="hidden" id="endPageNum" name="endPageNum" value="${view.endPageNum}" />
+	<input type="hidden" id="startPage" name="startPage" value="${view.startPage}" />
+	<input type="hidden" id="endPage" name="endPage" value="${view.endPage}" />
+	<input type="hidden" id="firstPage" name="firstPage" value="1" />
+	<input type="hidden" id="totalPages" name="totalPages" value="${view.totalPages}" />
 
 	<!-- Page Content -->
 	<div class="container">
