@@ -7,16 +7,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.blueRibbon.notice.dao.NoticeDao;
 import com.blueRibbon.notice.model.Notice;
+import com.blueRibbon.notice.model.NoticeFile;
 import com.blueRibbon.notice.service.NoticeService;
 
 @Controller
@@ -55,9 +58,20 @@ public class NoticeController {
 		map.put("test", "test");
 		model.addAttribute("test", "test");
 		noticeService.insertNotice(notice);
-		logger.debug("@@@@@@@@@@@@@@@@ model = " + model);
 		return map;
 	}
+	
+/*	@RequestMapping(value = "/imageUpload", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> noticeImageUpload(Model model, @RequestParam("file") MultipartFile file, int noticeId) throws Exception {
+		try {
+			NoticeFile noticeFile = noticeService.uploadFile(file);
+			return ResponseEntity.ok().body("/image/" + noticeFile.getNoticeFileId());
+		} catch(Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.badRequest().build();
+		}
+	}*/
 	
 	@RequestMapping("/update")
 	public String noticeUpdate(Model model, int noticeId) throws Exception {

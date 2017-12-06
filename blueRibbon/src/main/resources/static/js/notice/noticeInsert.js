@@ -6,15 +6,44 @@ $(document).ready(function() {
 	$('#summernote').summernote({
 		lang: 'ko-KR',
 		height: 300,
-		minHeight: null,
+		minHeight: 350,
 		maxHeight: null,
-		focus: false
+		dialogsFade: true,
+		focus: true,
+		callbacks: {
+			onImageUpload: function(files, editor, welEditable) {
+				console.log(files);
+				for(var i = files.length - 1; i >= 0; i--) {
+					uploadImage(files[i], this);
+				}
+			}
+		}
 	});
 	
 	$('#insertBtn').on('click', function(e) {
 		valid();
 	});
 });
+
+function uploadImage(file, el) {
+	var formData = new FormData();
+	formData.append('file', file);
+	//console.log(formData);
+	
+/*	$.ajax({
+		data: formData,
+		type: 'POST',
+		url: '/notice/uploadImage',
+		cache: false,
+		contentType: false,
+		enctype: 'multipart/form-data',
+		processData: false,
+		success: function(url) {
+	        $(el).summernote('editor.insertImage', url);
+	        $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');		
+		}
+	});*/
+}
 
 function valid() {
 	if($('#title').val() == '') {

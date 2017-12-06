@@ -12,23 +12,23 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="TB_NOTICE")
+@Table(name = "tb_notice")
 public class Notice {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int noticeId;
 	
-	@Column(name="TITLE")
+	@Column(name = "title", length = 100)
 	private String title;
 	
-	@Column(name="CONTENTS")
+	@Column(name = "contents", length = 5000)
 	private String contents;
 	
-	@Column(name="USER_ID")
+	@Column(name = "user_id")
 	private String userId;
 	
-	@Column(name="CREATE_DT")
+	@Column(name = "create_dt", insertable = false)
 	@Temporal(TemporalType.DATE)
 	private Date createDt;
 	
