@@ -98,8 +98,8 @@ public class NoticeService {
 		}
 	}
 	
-/*    public NoticeFile uploadFile(MultipartFile file) throws Exception {
-        try {
+    public NoticeFile uploadImageProc(MultipartFile file, int noticeId) throws Exception {    	
+    	try {
             if(file.isEmpty()) {
                 throw new Exception("파일이 존재하지 않습니다");
             }
@@ -107,15 +107,24 @@ public class NoticeService {
             String org_file_nm = file.getOriginalFilename();
     		String saveFileNm = System.currentTimeMillis() + "_" + org_file_nm;
     		String upload_path = FilenameUtils.concat(noticePath, saveFileNm);
+    		
+    		File notice = new File(noticePath);
+    		
+    		if(!notice.exists()) {
+    			notice.mkdir();
+    		}
+    		
             file.transferTo(new File(upload_path));
             
             NoticeFile noticeFile = new NoticeFile();
-            noticeFile.setOrgFileNm(file.getOriginalFilename());
-            noticeFile.setSaveFileNm(saveFileNm);
-            noticeFile.setFileExtension(FilenameUtils.getExtension(org_file_nm));
+            //noticeFile.setOrgFileNm(org_file_nm);
+            //noticeFile.setSaveFileNm(saveFileNm);
+            //noticeFile.setFileExtension(FilenameUtils.getExtension(org_file_nm));
+            
+            return noticeFile;
         } catch (Exception e) {
-            throw new Exception("파일 저장에 실패했습니다.(파일이름 = )" + file.getOriginalFilename(), e);
+            throw new Exception("파일 저장에 실패했습니다. (파일이름 = " + file.getOriginalFilename() + ")", e);
         }
-    }*/
+    }
     
 }

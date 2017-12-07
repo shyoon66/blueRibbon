@@ -12,9 +12,15 @@ $(document).ready(function() {
 		focus: true,
 		callbacks: {
 			onImageUpload: function(files, editor, welEditable) {
-				console.log(files);
 				for(var i = files.length - 1; i >= 0; i--) {
-					uploadImage(files[i], this);
+					var type = files[i].type;
+					var name = files[i].name;
+					var extension = name.substr(name.lastIndexOf('.') + 1, name.length - 1);
+					var size = files[i].size;
+					
+					if(validImage(type, extension, size)) {
+						uploadImage(files[i], this);
+					}
 				}
 			}
 		}
@@ -25,13 +31,32 @@ $(document).ready(function() {
 	});
 });
 
-function uploadImage(file, el) {
-	var formData = new FormData();
-	formData.append('file', file);
-	//console.log(formData);
+function validImage(type, extension, size) {
+	if(type.indexOf('image') < 0) {
+		alert('사진파일만 업로드 가능합니다.');
+		return false;
+	}
 	
-/*	$.ajax({
-		data: formData,
+	if(extension != 'png' && extension != 'jpg' && extension != 'gif') {
+		alert('확장자가 png, jpg, gif인 파일만 업로드 가능합니다.');
+		return false;
+	}
+	
+	if((size / 1024 / 1024) > 20) {
+		alert('업로드는 20MB까지 가능합니다.');
+		return false;
+	}
+	
+	return true;
+}
+
+function uploadImage(file, el) {
+    var form_data = new FormData();
+    form_data.append('file', file);
+    form_data.append('noticeId', 0);
+    
+	$.ajax({
+		data: form_data,
 		type: 'POST',
 		url: '/notice/uploadImage',
 		cache: false,
@@ -42,7 +67,7 @@ function uploadImage(file, el) {
 	        $(el).summernote('editor.insertImage', url);
 	        $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');		
 		}
-	});*/
+	});
 }
 
 function valid() {

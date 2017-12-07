@@ -61,17 +61,17 @@ public class NoticeController {
 		return map;
 	}
 	
-/*	@RequestMapping(value = "/imageUpload", method = RequestMethod.POST)
+	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<?> noticeImageUpload(Model model, @RequestParam("file") MultipartFile file, int noticeId) throws Exception {
+	public ResponseEntity<?> uploadImage(Model model, @RequestParam("file") MultipartFile file, int noticeId) throws Exception {
 		try {
-			NoticeFile noticeFile = noticeService.uploadFile(file);
-			return ResponseEntity.ok().body("/image/" + noticeFile.getNoticeFileId());
+			NoticeFile noticeFile = noticeService.uploadImageProc(file, noticeId);
+			return ResponseEntity.ok().body("/notice/insert");
 		} catch(Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.badRequest().build();
 		}
-	}*/
+	}
 	
 	@RequestMapping("/update")
 	public String noticeUpdate(Model model, int noticeId) throws Exception {
