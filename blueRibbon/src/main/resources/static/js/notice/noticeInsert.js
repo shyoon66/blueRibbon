@@ -64,8 +64,9 @@ function uploadImage(file, el) {
 		enctype: 'multipart/form-data',
 		processData: false,
 		success: function(url) {
-	        $(el).summernote('editor.insertImage', url);
-	        $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');		
+			console.log(url);
+			$('#summernote').summernote('insertImage', url);
+			$('#imageBoard > ul').append('<li><img src="' + url + '" width="480" height="auto"/></li>');
 		}
 	});
 }

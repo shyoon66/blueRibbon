@@ -100,7 +100,7 @@ public class NoticeService {
 	
     public NoticeFile uploadImageProc(MultipartFile file, int noticeId) throws Exception {    	
     	try {
-            if(file.isEmpty()) {
+    		if(file.isEmpty()) {
                 throw new Exception("파일이 존재하지 않습니다");
             }
             
@@ -117,9 +117,11 @@ public class NoticeService {
             file.transferTo(new File(upload_path));
             
             NoticeFile noticeFile = new NoticeFile();
-            //noticeFile.setOrgFileNm(org_file_nm);
-            //noticeFile.setSaveFileNm(saveFileNm);
-            //noticeFile.setFileExtension(FilenameUtils.getExtension(org_file_nm));
+            noticeFile.setOrgFileNm(org_file_nm);
+            noticeFile.setSaveFileNm(saveFileNm);
+            noticeFile.setFileExtension(FilenameUtils.getExtension(org_file_nm));
+            
+            //noticeDao.save(entity)
             
             return noticeFile;
         } catch (Exception e) {

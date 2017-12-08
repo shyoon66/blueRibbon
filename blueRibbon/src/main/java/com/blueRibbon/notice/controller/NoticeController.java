@@ -66,7 +66,7 @@ public class NoticeController {
 	public ResponseEntity<?> uploadImage(Model model, @RequestParam("file") MultipartFile file, int noticeId) throws Exception {
 		try {
 			NoticeFile noticeFile = noticeService.uploadImageProc(file, noticeId);
-			return ResponseEntity.ok().body("/notice/insert");
+			return ResponseEntity.ok().body("/uploadImage/" + noticeFile.getSaveFileNm());
 		} catch(Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.badRequest().build();
