@@ -11,7 +11,7 @@ $(document).ready(function() {
 		dialogsFade: true,
 		focus: true,
 		callbacks: {
-			onImageUpload: function(files, editor, welEditable) {
+			onImageUpload: function(files) {
 				for(var i = files.length - 1; i >= 0; i--) {
 					var type = files[i].type;
 					var name = files[i].name;
@@ -19,7 +19,7 @@ $(document).ready(function() {
 					var size = files[i].size;
 					
 					if(validImage(type, extension, size)) {
-						uploadImage(files[i], this);
+						uploadImage(files[i]);
 					}
 				}
 			}
@@ -50,10 +50,9 @@ function validImage(type, extension, size) {
 	return true;
 }
 
-function uploadImage(file, el) {
+function uploadImage(file) {
     var form_data = new FormData();
     form_data.append('file', file);
-    form_data.append('noticeId', 0);
     
 	$.ajax({
 		data: form_data,
@@ -63,10 +62,13 @@ function uploadImage(file, el) {
 		contentType: false,
 		enctype: 'multipart/form-data',
 		processData: false,
-		success: function(url) {
-			console.log(url);
-			$('#summernote').summernote('insertImage', url);
-			$('#imageBoard > ul').append('<li><img src="' + url + '" width="480" height="auto"/></li>');
+		success: function(rJson) {
+			console.log(rJson);
+			if(rJson.success) {
+				$('#summernote').summernote('insertImage', rJson.url);
+			} else {
+				alert(rJson.msg);
+			}
 		}
 	});
 }

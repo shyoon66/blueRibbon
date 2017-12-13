@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.blueRibbon.common.service.CommonService;
 import com.blueRibbon.notice.dao.NoticeDao;
 import com.blueRibbon.notice.model.Notice;
 import com.blueRibbon.notice.model.NoticeFile;
@@ -30,6 +31,9 @@ public class NoticeController {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	@Autowired
+	private CommonService commonService;
 	
 	@Autowired
 	private NoticeDao noticeDao;
@@ -63,14 +67,23 @@ public class NoticeController {
 	
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<?> uploadImage(Model model, @RequestParam("file") MultipartFile file, int noticeId) throws Exception {
+	public Map<String, Object> uploadImage(Model model, @RequestParam("file") MultipartFile file) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
 		try {
-			NoticeFile noticeFile = noticeService.uploadImageProc(file, noticeId);
-			return ResponseEntity.ok().body("/uploadImage/" + noticeFile.getSaveFileNm());
+			NoticeFile noticeFile = commonService.uploadImageProc(file);
+			String url = "/common/getTempImage?div=notice&fileNm=" + noticeFile.getSaveFileNm();
+			
+			map.put("success", true);
+			map.put("url", url);
+			map.put("noticeFile", noticeFile);
 		} catch(Exception e) {
 			e.printStackTrace();
-			return ResponseEntity.badRequest().build();
+			map.put("success", false);
+			map.put("msg", "이미지 업로드에 실패했습니다.");
 		}
+	
+		return map;
 	}
 	
 	@RequestMapping("/update")
