@@ -6,8 +6,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,6 +38,9 @@ public class NoticeController {
 	@Autowired
 	private NoticeDao noticeDao;
 	
+	@Value("${page.size}")
+	private int pageSize;
+	
 	@RequestMapping("/list")
 	public String noticeList(Model model, Pageable pageable) throws Exception {
 		model.addAttribute("view", noticeService.getNoticeList(pageable));		
@@ -59,9 +62,16 @@ public class NoticeController {
 	@ResponseBody
 	public Map<String, Object> noticeInsertProc(Model model, @ModelAttribute Notice notice) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("test", "test");
-		model.addAttribute("test", "test");
-		noticeService.insertNotice(notice);
+		
+		if(noticeService.insertNotice(notice) != null) {
+			map.put("success", true);
+			map.put("msg", "등록이 성공 했습니다.");
+			map.put("url", String.format("/notice/list?page=0&size=%d&sort=createDt,desc", pageSize));
+		} else {
+			map.put("success", false);
+			map.put("msg", "등록이 실패 했습니다.");
+		}
+		
 		return map;
 	}
 	

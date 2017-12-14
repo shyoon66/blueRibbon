@@ -101,14 +101,15 @@ function insert() {
 	var url = '/notice/insertProc.json';
 	var params = {
 		title: $('#title').val(),
-		contents: $('#summernote').summernote('code'),
+		contents: $('#summernote').summernote('code').replace(/<\/?[^>]+(>|$)/g, ''),
 		userId: $('#userId').val()
 	};
 	
 	$.post(url, params, function(rJson) {
-		console.log(rJson);
-/*		if(rJson.success) {
-			//alert('')
-		}*/
+		alert(rJson.msg);
+		
+		if(rJson.success) {
+			location.href = rJson.url;
+		}
 	});
 }

@@ -78,8 +78,8 @@ public class NoticeService {
 		return pageMap;
 	}
 	
-	public void insertNotice(Notice notice) throws Exception {
-		noticeDao.save(notice);
+	public Notice insertNotice(Notice notice) throws Exception {
+		return noticeDao.save(notice);
 	}
 	
 	public void deleteNotice(Model model, int noticeId) throws Exception {
