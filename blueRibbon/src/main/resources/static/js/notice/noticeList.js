@@ -5,14 +5,15 @@
 $(document).ready(function() {	
 	$('a.page-link').on('click', function(e) {
 		var $li = $(this).closest('ul').children();
+		var page = parseInt($('#page').val());
 		
 		$.each($li, function(i, elem) {
-			$(elem).removeClass('active');
+			var children = $(elem).children();
+			
+			if(!children.hasClass('cursor')) {
+				$(elem).removeClass('active');
+			}
 		});
-		
-/*		if($(this).hasClass('pagenum')) {
-			$(this).parent().addClass('active');
-		}*/
 	});
 	
 	$('#insertBtn').on('click', function(e) {
@@ -39,6 +40,9 @@ function selectCurrentPage() {
 	
 	var curLi = $('ul.pagination').children()[index];
 	$(curLi).addClass('active');
+	
+	var curAtag = $(curLi).children();
+	$(curAtag).addClass('cursor').attr('href', '#');
 }
 
 function pageBtn() {

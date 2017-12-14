@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../common/staticImport.jsp" %>
 
-<c:url var="urlNoticeList" value="/notice/list" />
-<c:url var="urlNoticeView" value="/notice/view" />
+<c:url var="urlNoticeList" 		value="/notice/list" />
+<c:url var="urlNoticeView" 		value="/notice/view" />
 
 <jsp:include page="../common/header.jsp" />
+
+<style>
+	.cursor {
+		cursor: default;
+	}
+</style>
 
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
