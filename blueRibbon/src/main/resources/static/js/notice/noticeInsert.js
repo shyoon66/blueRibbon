@@ -2,6 +2,8 @@
  * 
  */
 
+var _fileList = [];
+
 $(document).ready(function() {
 	$('#summernote').summernote({
 		lang: 'ko-KR',
@@ -89,11 +91,6 @@ function valid() {
 		return;
 	}
 	
-	if($('#summernote').summernote('code').length > 5000) {
-		alert('내용은 5000자 이하로 입력해 주세요.');
-		return;
-	}
-	
 	insert();
 }
 
@@ -101,7 +98,7 @@ function insert() {
 	var url = '/notice/insertProc.json';
 	var params = {
 		title: $('#title').val(),
-		contents: $('#summernote').summernote('code').replace(/<\/?[^>]+(>|$)/g, ''),
+		contents: $('#summernote').summernote('code'),
 		userId: $('#userId').val()
 	};
 	

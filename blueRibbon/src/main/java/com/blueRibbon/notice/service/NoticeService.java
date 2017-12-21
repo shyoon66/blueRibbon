@@ -52,24 +52,29 @@ public class NoticeService {
 		int endPage = 0;
 		Map<String, Integer> pageMap = new HashMap<String, Integer>();
 		
-		if(totalPage <= pageSize) {
-			startPage = page - (page - 1);
-			endPage = totalPage;
-		} else if(page - (pageSize * div) == 0) {
-			if((div - 1) == 0) {
-				startPage = page - (page - 1);
-			} else {
-				startPage = page - (pageSize - 1);
-			}
-			
-			endPage = page;
+		if(totalPage == 0) {
+			startPage = 1;
+			endPage = 1;
 		} else {
-			startPage = pageSize * div + 1;
-			endPage = pageSize * (div + 1);
-			
-			if(totalPage <= endPage) {
+			if(totalPage <= pageSize) {
+				startPage = page - (page - 1);
 				endPage = totalPage;
-			}
+			} else if(page - (pageSize * div) == 0) {
+				if((div - 1) == 0) {
+					startPage = page - (page - 1);
+				} else {
+					startPage = page - (pageSize - 1);
+				}
+				
+				endPage = page;
+			} else {
+				startPage = pageSize * div + 1;
+				endPage = pageSize * (div + 1);
+				
+				if(totalPage <= endPage) {
+					endPage = totalPage;
+				}
+			}			
 		}
 		
 		pageMap.put("startPage", startPage);
@@ -82,15 +87,24 @@ public class NoticeService {
 		return noticeDao.save(notice);
 	}
 	
-	public void deleteNotice(Model model, int noticeId) throws Exception {
+	public Notice updateNotice(Notice notice) throws Exception {
+		return noticeDao.save(notice);
+	}
+	
+	public Map<String, Object> deleteNotice(Model model, int noticeId) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("url", String.format("/notice/list?page=0&size=%d&sort=createDt,desc", pageSize));
+		
 		try {
 			noticeDao.delete(noticeId);
-			model.addAttribute("success", true);
-			model.addAttribute("rMsg", "삭제가 성공 했습니다.");
+			map.put("success", true);
+			map.put("msg", "삭제가 성공 했습니다.");
 		} catch(IllegalArgumentException e) {
-			model.addAttribute("success", false);
-			model.addAttribute("rMsg", "삭제가 실패 했습니다.");
+			map.put("success", false);
+			map.put("msg", "삭제가 실패 했습니다.");
 		}
+	
+		return map;
 	}
 	
 }

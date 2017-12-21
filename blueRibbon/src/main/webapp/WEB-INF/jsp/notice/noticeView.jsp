@@ -31,7 +31,8 @@
 			</div>
 			<hr>
 			<div class="col-md-12">
-				<textarea rows="15" cols="150" readonly="readonly">${view.contents}</textarea>
+				<%-- <textarea rows="15" cols="150" readonly="readonly">${view.contents}</textarea> --%>
+				<div>${view.contents}</div>
 			</div>
 		</div>
 		<div class="row">

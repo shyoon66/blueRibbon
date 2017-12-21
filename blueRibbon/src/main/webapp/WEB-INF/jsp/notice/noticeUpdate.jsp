@@ -14,10 +14,11 @@
 <script src="../summernote/summernote-bs4.js"></script>
 <script src="../summernote/lang/summernote-ko-KR.js"></script>
 
-<script src="../js/notice/noticeInsert.js"></script>
+<script src="../js/notice/noticeUpdate.js"></script>
 
 <body>
 	<input type="hidden" id="page" name="page" value="${param.page}" />
+	<input type="hidden" id="noticeId" name="noticeId" value="${param.noticeId}" />
 
 	<!-- Page Content -->
 	<div class="container">

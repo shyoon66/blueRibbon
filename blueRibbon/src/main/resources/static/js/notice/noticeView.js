@@ -27,6 +27,7 @@ function deleteNotice() {
 	};
 	
 	$.post(url, param, function(rJson) {
-		console.log(rJson);
+		alert(rJson.msg);
+		location.href = rJson.url;
 	});
 }

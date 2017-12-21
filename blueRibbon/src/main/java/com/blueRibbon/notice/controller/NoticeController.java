@@ -75,6 +75,23 @@ public class NoticeController {
 		return map;
 	}
 	
+	@RequestMapping(value = "/updateProc.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> noticeUpdateProc(Model model, @ModelAttribute Notice notice) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(noticeService.updateNotice(notice) != null) {
+			map.put("success", true);
+			map.put("msg", "수정이 성공 했습니다.");
+			map.put("url", String.format("/notice/list?page=0&size=%d&sort=createDt,desc", pageSize));
+		} else {
+			map.put("success", false);
+			map.put("msg", "수정이 실패 했습니다.");
+		}
+		
+		return map;
+	}
+	
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> uploadImage(Model model, @RequestParam("file") MultipartFile file) throws Exception {
@@ -103,7 +120,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "/deleteProc.json", method = RequestMethod.POST)
-	public void noticeDeleteProc(Model model, int noticeId) throws Exception {
-		noticeService.deleteNotice(model, noticeId);
+	@ResponseBody
+	public Map<String, Object> noticeDeleteProc(Model model, int noticeId) throws Exception {
+		return noticeService.deleteNotice(model, noticeId);
 	}
 }
