@@ -7,8 +7,8 @@ var _fileList = [];
 $(document).ready(function() {
 	$('#summernote').summernote({
 		lang: 'ko-KR',
-		height: 300,
-		minHeight: 350,
+		height: 515,
+		minHeight: 515,
 		maxHeight: null,
 		dialogsFade: true,
 		focus: true,
@@ -26,6 +26,10 @@ $(document).ready(function() {
 				}
 			}
 		}
+	});
+	
+	$('a.notice-title').mouseover(function() {
+		$(this).css('color', 'blue');
 	});
 	
 	$('#insertBtn').on('click', function(e) {

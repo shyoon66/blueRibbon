@@ -26,21 +26,24 @@
 			공지사항
 		</h2>
 		<hr>	
-		<div class="row">
-			<div class="col-md-12">
-				글쓴이: <input type="text" id="userId" name="userId" value="admin" readonly="readonly"/>
+		<form class="form-inline">
+			<div class="row">
+				<div class="form-group col-xs-2">
+					<label for="userId">글쓴이: </label>
+					<input type="text" id="userId" name="userId" class="form-control" value="admin" readonly="readonly"/>
+				</div>
+				<div class="col-md-12">
+					제목: <input type="text" id="title" name="title" value=""/>
+				</div>
+				<hr>
+				<div class="col-md-12">
+					<div id="summernote"></div>
+				</div>
 			</div>
-			<div class="col-md-12">
-				제목: <input type="text" id="title" name="title" value=""/>
+			<div class="row">
+				<a href="#" id="insertBtn" class="btn btn-primary">등록</a>
 			</div>
-			<hr>
-			<div class="col-md-12">
-				<div id="summernote"></div>
-			</div>
-		</div>
-		<div class="row">
-			<a href="#" id="insertBtn" class="btn btn-primary">등록</a>
-		</div>
+		</form>
 	</div>
 	<!-- /.container -->
 

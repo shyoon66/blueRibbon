@@ -28,10 +28,15 @@
 	    <div class="collapse navbar-collapse" id="navbarResponsive">
 	      <ul class="navbar-nav ml-auto">
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">어학원소개</a>
+	          <a class="nav-link" href="#">블루리본 소개</a>
 	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="/notice/list?page=0&size=${pageSize}&sort=createDt,desc">공지사항</a>
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOnline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	        	온라인상담 및 연수신청
+	          </a>
+	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownOnline">
+	            <a class="dropdown-item" href="/notice/list?page=0&size=${pageSize}&sort=createDt,desc">공지사항</a>
+	          </div>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="#">Contact</a>
@@ -62,13 +67,6 @@
 	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	            Other Pages
 	          </a>
-	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-	            <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-	            <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-	            <a class="dropdown-item" href="faq.html">FAQ</a>
-	            <a class="dropdown-item" href="404.html">404</a>
-	            <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-	          </div>
 	        </li>
 	      </ul>
 	    </div>

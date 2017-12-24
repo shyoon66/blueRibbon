@@ -10,6 +10,9 @@
 	.cursor {
 		cursor: default;
 	}
+	.notice-title {
+		color: black;
+	}
 </style>
 
 <!-- Bootstrap core JavaScript -->
@@ -32,57 +35,50 @@
 		<h2 class="mt-4 mb-3">
 			공지사항
 		</h2>
-		<hr>
+		<hr/>
 		
-		<div class="row">
-			<div class="col-md-12">
-				<c:choose>
-					<c:when test="${fn:length(view.list) > 0}">
-						<div class="container table-responsive">
-							<table class="table table-sm table-hover">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th>제목</th>
-										<th>작성자</th>
-										<th>작성일</th>
-									</tr>
-								</thead>
-								<tbody>
-								<c:forEach var="notice" items="${view.list}" varStatus="status">
-									<tr>
-										<td>${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</td>
-										<td><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc">${notice.title}</a></td>
-										<td>${notice.userId}</td>
-										<td>${notice.createDt}</td>
-									</tr>
-								</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</c:when>
- 					<c:otherwise>
-						공지사항이 없습니다.
-					</c:otherwise>
-				</c:choose>
-			</div>
-		</div>
-		
-		<hr>
-
-		<!-- Pagination -->
-		<ul class="pagination justify-content-center">
-			<li id="previous" class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-		
-			<c:forEach var="i" begin="${view.startPage}" step="1" end="${view.endPage}">
-				<li class="page-item"><a class="page-link pagenum" href="${urlNoticeList}?page=${i - 1}&size=${view.pageSize}&sort=createDt,desc">${i}</a></li>
-			</c:forEach>
+		<c:choose>
+			<c:when test="${fn:length(view.list) > 0}">		
+				<table class="table table-sm table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="notice" items="${view.list}" varStatus="status">
+						<tr>
+							<td>${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</td>
+							<td><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc" class="notice-title">${notice.title}</a></td>
+							<td>${notice.userId}</td>
+							<td>${notice.createDt}</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</c:when>
+			<c:otherwise>
+				공지사항이 없습니다.
+			</c:otherwise>
+		</c:choose>
 			
-			<li id="next" class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-		</ul>
+		<hr/>
+		<a href="#" id="insertBtn" class="btn btn-primary btn-sm pull-right" style="float: right;">글쓰기</a>
 		
-		<div class="row">
-			<a href="#" id="insertBtn" class="btn btn-primary">글쓰기</a>
+		<div class="text-cetner">
+			<!-- Pagination -->
+			<ul class="pagination justify-content-center">
+				<li id="previous" class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+			
+				<c:forEach var="i" begin="${view.startPage}" step="1" end="${view.endPage}">
+					<li class="page-item"><a class="page-link pagenum" href="${urlNoticeList}?page=${i - 1}&size=${view.pageSize}&sort=createDt,desc">${i}</a></li>
+				</c:forEach>
+				
+				<li id="next" class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+			</ul>
 		</div>
 	</div>
 	<!-- /.container -->
