@@ -3,6 +3,7 @@ package com.blueRibbon.common.service;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 import javax.servlet.http.HttpServletResponse;
@@ -62,13 +63,23 @@ public class CommonService {
 		}		
 	}
 	
-    public NoticeFile uploadImageProc(MultipartFile file) throws Exception {    	
+    public NoticeFile uploadImageProc(MultipartFile file) throws IOException, IllegalStateException, Exception {   	
     	try {
     		if(file.isEmpty()) {
                 throw new Exception("파일이 존재하지 않습니다.");
             }
-            
-            String org_file_nm = file.getOriginalFilename();
+    		
+    		String org_file_nm = file.getOriginalFilename();    		
+    		String extension = FilenameUtils.getExtension(org_file_nm);
+    		String content_type = file.getContentType();
+    		long fileSize = file.getSize();
+    		
+/*    		Map<String, Object> fileMap = new HashMap<String, Object>();
+    		fileMap.put("extension", extension);
+    		fileMap.put("content_type", content_type);
+    		fileMap.put("fileSize", fileSize);  */  		
+    		validateImage(content_type, extension, fileSize);
+    		
     		String saveFileNm = System.currentTimeMillis() + "_" + org_file_nm;
     		String upload_path = FilenameUtils.concat(noticePath, saveFileNm);
     		
@@ -83,12 +94,30 @@ public class CommonService {
             NoticeFile noticeFile = new NoticeFile();
             noticeFile.setOrgFileNm(org_file_nm);
             noticeFile.setSaveFileNm(saveFileNm);
-            noticeFile.setFileExtension(FilenameUtils.getExtension(org_file_nm));
+            noticeFile.setFileExtension(extension);
             noticeFile.setFilePath(upload_path);
             
             return noticeFile;
-        } catch (Exception e) {
-            throw new Exception("파일 저장에 실패했습니다. (파일이름 = " + file.getOriginalFilename() + ")", e);
+        } catch (IOException ioe) {
+            throw new Exception("파일 저장에 실패했습니다. (파일이름 = " + file.getOriginalFilename() + ")", ioe);
+        } catch (IllegalStateException ise) {
+        	throw new Exception("파일 저장에 실패했습니다. (파일이름 = " + file.getOriginalFilename() + ")", ise);
+        } catch(Exception e) {
+        	throw new Exception(e.getMessage());
         }
+    }
+    
+    private void validateImage(String content_type, String extension, long fileSize) throws Exception {
+    	if(content_type.indexOf("image") < 0) {
+    		throw new Exception("사진파일만 업로드 가능합니다.");
+    	}
+    	
+    	if(!"png".equals(extension) && !"jpg".equals(extension) && !"gif".equals(extension)) {
+    		throw new Exception("확장자가 png, jpg, gif인 파일만 업로드 가능합니다.");
+    	}
+    	
+    	if((fileSize / 1024 / 1024) > 10) {
+    		throw new Exception("이미지 업로드는 10MB까지 가능합니다.");
+    	}
     }
 }

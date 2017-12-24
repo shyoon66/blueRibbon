@@ -44,8 +44,8 @@ function validImage(type, extension, size) {
 		return false;
 	}
 	
-	if((size / 1024 / 1024) > 20) {
-		alert('업로드는 20MB까지 가능합니다.');
+	if((size / 1024 / 1024) > 10) {
+		alert('이미지 업로드는 10MB까지 가능합니다.');
 		return false;
 	}
 	
@@ -65,7 +65,6 @@ function uploadImage(file) {
 		enctype: 'multipart/form-data',
 		processData: false,
 		success: function(rJson) {
-			console.log(rJson);
 			if(rJson.success) {
 				$('#summernote').summernote('insertImage', rJson.url);
 			} else {
@@ -76,7 +75,7 @@ function uploadImage(file) {
 }
 
 function valid() {
-	if($('#title').val() == '') {
+/*	if($('#title').val() == '') {
 		alert('제목을 입력해 주세요.');
 		return;
 	}
@@ -89,7 +88,7 @@ function valid() {
 	if($('#summernote').summernote('isEmpty')) {
 		alert('내용을 입력해 주세요.');
 		return;
-	}
+	}*/
 	
 	insert();
 }

@@ -84,10 +84,22 @@ public class NoticeService {
 	}
 	
 	public Notice insertNotice(Notice notice) throws Exception {
+		try {
+			validateNotice(notice);
+		} catch(Exception e) {
+			throw e;
+		}
+		
 		return noticeDao.save(notice);
 	}
 	
 	public Notice updateNotice(Notice notice) throws Exception {
+		try {
+			validateNotice(notice);
+		} catch(Exception e) {
+			throw e;
+		}
+		
 		return noticeDao.save(notice);
 	}
 	
@@ -105,6 +117,23 @@ public class NoticeService {
 		}
 	
 		return map;
+	}
+	
+	private void validateNotice(Notice notice) throws Exception {
+		String title = notice.getTitle();
+		String contents = notice.getContents();
+		
+		if("".equals(title) || title == null) {
+			throw new Exception("제목을 입력해 주세요.");
+		}
+		
+		if(title.length() > 100) {
+			throw new Exception("제목은 100자 이하로 입력해 주세요.");
+		}
+		
+		if("".equals(contents) || contents == null) {
+			throw new Exception("내용을 입력해 주세요.");
+		}
 	}
 	
 }

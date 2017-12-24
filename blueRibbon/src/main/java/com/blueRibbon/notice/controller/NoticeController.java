@@ -63,13 +63,19 @@ public class NoticeController {
 	public Map<String, Object> noticeInsertProc(Model model, @ModelAttribute Notice notice) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		if(noticeService.insertNotice(notice) != null) {
-			map.put("success", true);
-			map.put("msg", "등록이 성공 했습니다.");
-			map.put("url", String.format("/notice/list?page=0&size=%d&sort=createDt,desc", pageSize));
-		} else {
+		try {
+			if(noticeService.insertNotice(notice) != null) {
+				map.put("success", true);
+				map.put("msg", "등록이 성공 했습니다.");
+				map.put("url", String.format("/notice/list?page=0&size=%d&sort=createDt,desc", pageSize));
+			} else {
+				map.put("success", false);
+				map.put("msg", "등록이 실패 했습니다.");
+			}	
+		} catch(Exception e) {
+			e.printStackTrace();
 			map.put("success", false);
-			map.put("msg", "등록이 실패 했습니다.");
+			map.put("msg", e.getMessage());
 		}
 		
 		return map;
@@ -80,13 +86,19 @@ public class NoticeController {
 	public Map<String, Object> noticeUpdateProc(Model model, @ModelAttribute Notice notice) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		if(noticeService.updateNotice(notice) != null) {
-			map.put("success", true);
-			map.put("msg", "수정이 성공 했습니다.");
-			map.put("url", String.format("/notice/list?page=0&size=%d&sort=createDt,desc", pageSize));
-		} else {
+		try {
+			if(noticeService.updateNotice(notice) != null) {
+				map.put("success", true);
+				map.put("msg", "수정이 성공 했습니다.");
+				map.put("url", String.format("/notice/list?page=0&size=%d&sort=createDt,desc", pageSize));
+			} else {
+				map.put("success", false);
+				map.put("msg", "수정이 실패 했습니다.");
+			}	
+		} catch(Exception e) {
+			e.printStackTrace();
 			map.put("success", false);
-			map.put("msg", "수정이 실패 했습니다.");
+			map.put("msg", e.getMessage());			
 		}
 		
 		return map;
@@ -107,7 +119,7 @@ public class NoticeController {
 		} catch(Exception e) {
 			e.printStackTrace();
 			map.put("success", false);
-			map.put("msg", "이미지 업로드에 실패했습니다.");
+			map.put("msg", e.getMessage());
 		}
 	
 		return map;
