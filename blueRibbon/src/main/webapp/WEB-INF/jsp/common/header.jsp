@@ -32,41 +32,51 @@
 	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOnline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	        	교육프로그램
+	          </a>
+	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownOnline">
+	            <a class="dropdown-item" href="#">교육프로그램</a>
+	            <a class="dropdown-item" href="#">커리큘럼 및 강의 시간표</a>
+	            <a class="dropdown-item" href="#">수준별 학습</a>
+	          </div>
+	        </li>
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOnline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	        	연수신청 및 절차
+	          </a>
+	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownOnline">
+	            <a class="dropdown-item" href="#">연수비용</a>
+	            <a class="dropdown-item" href="#">연수절차</a>
+	            <a class="dropdown-item" href="#">연수규정</a>
+	            <a class="dropdown-item" href="#">연수신청</a>
+	          </div>
+	        </li>
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOnline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	        	온라인상담 및 연수신청
 	          </a>
 	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownOnline">
 	            <a class="dropdown-item" href="/notice/list?page=0&size=${pageSize}&sort=createDt,desc">공지사항</a>
+	            <a class="dropdown-item" href="#">질의응답</a>
+	            <a class="dropdown-item" href="#">모집일정</a>
+	            <a class="dropdown-item" href="#">자주묻는 질문</a>
+	          </div>
+	        </li>
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOnline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	        	사진/동영상
+	          </a>
+	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownOnline">
+	            <a class="dropdown-item" href="#">학원사진</a>
+	            <a class="dropdown-item" href="#">원룸사진</a>
+	            <a class="dropdown-item" href="#">수업사진</a>
+	            <a class="dropdown-item" href="#">선생님사진</a>
+	            <a class="dropdown-item" href="#">과외활동사진</a>
+	            <a class="dropdown-item" href="#">캠프사진</a>
 	          </div>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Contact</a>
-	        </li>
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	            Portfolio
-	          </a>
-	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-	            <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-	            <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-	            <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-	            <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-	            <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-	          </div>
-	        </li>
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	            Blog
-	          </a>
-	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-	            <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-	            <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-	            <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-	          </div>
-	        </li>
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	            Other Pages
-	          </a>
+	          <a class="nav-link" href="/login/">로그인</a>
 	        </li>
 	      </ul>
 	    </div>
