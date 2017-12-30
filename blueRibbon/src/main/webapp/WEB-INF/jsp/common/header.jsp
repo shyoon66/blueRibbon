@@ -16,8 +16,13 @@
 
     <!-- Custom styles for this template -->
     <link href="../css/modern-business.css" rel="stylesheet">
+    
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../js/common/header.js"></script>
   </head>
   <body>
+  	<input type="hidden" id="login_type" name="login_type" value="${login_type}" />
+  	
 	<!-- Navigation -->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 	  <div class="container">
@@ -76,7 +81,17 @@
 	          </div>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="/login/">로그인</a>
+	        	<c:choose>
+	        		<c:when test="${user eq null}">
+	        			<a class="nav-link" href="/login/">로그인</a>
+	        		</c:when>
+	        		<c:otherwise>
+	        			<a id="logout" class="nav-link" href="#">로그아웃</a>
+	        		</c:otherwise>
+	        	</c:choose>
+	        	<c:if test="">
+	          		
+	          	</c:if>
 	        </li>
 	      </ul>
 	    </div>

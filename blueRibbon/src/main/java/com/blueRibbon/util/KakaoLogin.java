@@ -63,7 +63,7 @@ public class KakaoLogin {
 
 	}
 
-	public static JsonNode getKakaoUserInfo(String autorize_code) {
+	public static JsonNode getKakaoUserInfo(String autorize_code) throws Exception {
 		final String RequestUrl = "https://kapi.kakao.com/v1/user/me";
 		final HttpClient client = HttpClientBuilder.create().build();
 		final HttpPost post = new HttpPost(RequestUrl);
@@ -77,18 +77,21 @@ public class KakaoLogin {
 			final HttpResponse response = client.execute(post);
 			final int responseCode = response.getStatusLine().getStatusCode();
 
-			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
-			System.out.println("Response Code : " + responseCode);
+			logger.info("\nSending 'POST' request to URL : " + RequestUrl);
+			logger.info("Response Code : " + responseCode);
 
 			// JSON 형태 반환값 처리
 			ObjectMapper mapper = new ObjectMapper();
 			returnNode = mapper.readTree(response.getEntity().getContent());
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
+			throw new Exception("로그인에 실패 했습니다.");
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
+			throw new Exception("로그인에 실패 했습니다.");
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new Exception("로그인에 실패 했습니다.");
 		} finally {
 			// clear resources
 		}
@@ -102,6 +105,7 @@ public class KakaoLogin {
 		kakaoUser.setUserId(userInfo.path("id").asText()); // id -> vo 넣기
 
 		if(userInfo.path("kaccount_email_verified").asText().equals("true")) { // 이메일 받기 허용 한 경우
+			kakaoUser.setEmail(userInfo.path("kaccount_email").asText());
 			//vo.setUser_email(userInfo.path("kaccount_email").asText()); // email -> vo 넣기
 		} else { // 이메일 거부 할 경우 코드 추후 개발
 

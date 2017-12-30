@@ -26,6 +26,12 @@ public class KakaoUser {
 	@Column(name = "thumbnail_image")
 	private String thumbnailImage;
 	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "authority")
+	private String authority;
+	
 	@Column(name = "create_dt", insertable = false)
 	@Temporal(TemporalType.DATE)
 	private Date createDt;
@@ -55,13 +61,29 @@ public class KakaoUser {
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
 	}
-
+	
 	public String getThumbnailImage() {
 		return thumbnailImage;
 	}
-
+	
 	public void setThumbnailImage(String thumbnailImage) {
 		this.thumbnailImage = thumbnailImage;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
 	public Date getCreateDt() {

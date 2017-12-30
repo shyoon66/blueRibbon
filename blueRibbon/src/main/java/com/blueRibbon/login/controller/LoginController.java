@@ -33,17 +33,26 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
-	public String kakaoLogin(Model model, @RequestParam("code") String code, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
-		JsonNode token = KakaoLogin.getAccessToken(code);
-		logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ token = {}", token);
-		JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
-		logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ user_profile = {}", profile);
+	public String kakaoLogin(Model model, @RequestParam(value = "code", required = false) String code, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+		try {
+			if(code != null) {
+				JsonNode token = KakaoLogin.getAccessToken(code);
+				//logger.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ token = {}", token);
+				JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
+				//logger.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ user_profile = {}", profile);
+				KakaoUser kakaoUser = KakaoLogin.changeData(profile);
+				session.setAttribute("access_token", token.path("access_token").toString());
+				session.setAttribute("user", kakaoUser);
+				session.setAttribute("login_type", "kakao");
+				loginService.insertKakaoUser(kakaoUser);				
+			}
+
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new Exception(e.getMessage());
+		}	
 		
-		KakaoUser kakaoUser = KakaoLogin.changeData(profile);
-		session.setAttribute("user", kakaoUser);
-		loginService.insertKakaoUser(kakaoUser);
-		
-		return "home";
+		return "redirect:/";
 	}
 	
 }
