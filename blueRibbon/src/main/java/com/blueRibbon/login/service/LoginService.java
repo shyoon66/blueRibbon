@@ -22,9 +22,9 @@ public class LoginService {
 	public KakaoUser insertKakaoUser(KakaoUser kakaoUser) throws Exception {
 		String user_id = kakaoUser.getUserId();
 		
-		if("681910979".equals(user_id)) {
+/*		if("681910979".equals(user_id)) {
 			kakaoUser.setAuthority("A");
-		}
+		}*/
 		
 		return kakaoLoginDao.save(kakaoUser);
 	}

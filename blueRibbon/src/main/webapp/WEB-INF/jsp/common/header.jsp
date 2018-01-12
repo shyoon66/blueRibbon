@@ -35,6 +35,9 @@
 	        <li class="nav-item">
 	          <a class="nav-link" href="#">블루리본 소개</a>
 	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/notice/list?page=0&size=${pageSize}&sort=createDt,desc">공지사항</a>
+	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOnline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	        	교육프로그램
@@ -61,7 +64,6 @@
 	        	온라인상담 및 연수신청
 	          </a>
 	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownOnline">
-	            <a class="dropdown-item" href="/notice/list?page=0&size=${pageSize}&sort=createDt,desc">공지사항</a>
 	            <a class="dropdown-item" href="#">질의응답</a>
 	            <a class="dropdown-item" href="#">모집일정</a>
 	            <a class="dropdown-item" href="#">자주묻는 질문</a>
