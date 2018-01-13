@@ -11,6 +11,8 @@
 	}
 </style>
 
+<link href="../css/sticky-footer-navbar.css" rel="stylesheet">
+
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -22,8 +24,8 @@
 	<input type="hidden" id="pageSize" name="pageSize" value="${param.size}" />
 
 	<!-- Page Content -->
-	<form class="form-horizontal">
-		<div class="container">
+	<div id="wrap">
+		<div id="main" class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h2 class="mt-4 mb-3">
 				공지사항
@@ -51,17 +53,16 @@
 			</div>
 			<hr>
 			<div class="row">
-				<%-- <textarea rows="15" cols="150" readonly="readonly">${view.contents}</textarea> --%>
 				<div class="col-md-12">${view.contents}</div>
 			</div>
-			<hr>
+			<hr>	 		
 			<div class="text-right">
 				<a href="#" id="updateBtn" class="btn btn-primary btn-sm">수정</a>
 				<a href="#" id="deleteBtn" class="btn btn-primary btn-sm">삭제</a>
 				<a href="#" id="listBtn" class="btn btn-primary btn-sm">목록</a>
 			</div>
 		</div>
-	</form>
+	</div>
 	<!-- /.container -->
 
 	<jsp:include page="../common/footer.jsp" />
