@@ -107,7 +107,15 @@ function update() {
 	};
 	
 	$.post(url, params, function(rJson) {
-		alert(rJson.msg);
-		location.href = rJson.url;
+		if(rJson.success == undefined) {
+			alert('로그인이 필요합니다.');
+			location.href = '/login/';
+		} else {
+			alert(rJson.msg);
+			
+			if(rJson.success) {
+				location.href = rJson.url;
+			}
+		}
 	});
 }

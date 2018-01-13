@@ -5,6 +5,12 @@
 
 <jsp:include page="../common/header.jsp" />
 
+<style>
+	.right {
+		float: right;
+	}
+</style>
+
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -16,31 +22,46 @@
 	<input type="hidden" id="pageSize" name="pageSize" value="${param.size}" />
 
 	<!-- Page Content -->
-	<div class="container">
-		<!-- Page Heading/Breadcrumbs -->
-		<h2 class="mt-4 mb-3">
-			공지사항
-		</h2>
-		<hr>	
-		<div class="row">
-			<div class="col-md-12">
-				글쓴이: <input type="text" id="userId" name="userId" value="${view.userId}" readonly="readonly"/>
+	<form class="form-horizontal">
+		<div class="container">
+			<!-- Page Heading/Breadcrumbs -->
+			<h2 class="mt-4 mb-3">
+				공지사항
+			</h2>
+			<hr>
+			<div class="row">
+				<div class="form-group form-group-sm col-sm-4">
+                	<div class="row">
+						<label for="userId" class="col-sm-3 col-form-label">글쓴이</label>
+						<div class="col-sm-6">
+							<input type="text" id="userId" name="userId" class="form-control" value="${view.userId}" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-12">
-				제목: <input type="text" id="title" name="title" value="${view.title}" readonly="readonly"/>
+			<div class="row">
+				<div class="form-group form-group-sm col-sm-12">
+                	<div class="row">
+						<label for="userId" class="col-sm-1 col-form-label">제목</label>
+						<div class="col-sm-11">
+							<input type="text" id="title" name="title" class="form-control" value="${view.title}" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
 			</div>
 			<hr>
-			<div class="col-md-12">
+			<div class="row">
 				<%-- <textarea rows="15" cols="150" readonly="readonly">${view.contents}</textarea> --%>
-				<div>${view.contents}</div>
+				<div class="col-md-12">${view.contents}</div>
+			</div>
+			<hr>
+			<div class="text-right">
+				<a href="#" id="updateBtn" class="btn btn-primary btn-sm">수정</a>
+				<a href="#" id="deleteBtn" class="btn btn-primary btn-sm">삭제</a>
+				<a href="#" id="listBtn" class="btn btn-primary btn-sm">목록</a>
 			</div>
 		</div>
-		<div class="row">
-			<a href="#" id="updateBtn" class="btn btn-primary">수정</a>
-			<a href="#" id="deleteBtn" class="btn btn-primary">삭제</a>
-			<a href="#" id="listBtn" class="btn btn-primary">목록</a>
-		</div>
-	</div>
+	</form>
 	<!-- /.container -->
 
 	<jsp:include page="../common/footer.jsp" />

@@ -14,10 +14,4 @@ function logout() {
 
 function kakao_logout() {
 	location.href = '/logout/kakao';
-/*	Kakao.Auth.logout(function(data) {
-		console.log(data);
-		if(data) {
-        	//location.href='/logout/';
-        }
-    });*/
 }

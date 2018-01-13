@@ -6,6 +6,8 @@
 
 <jsp:include page="../common/header.jsp" />
 
+<link href="../vendor/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
+
 <style>
 	.cursor {
 		cursor: default;
@@ -51,17 +53,17 @@
 					<tbody>
 					<c:forEach var="notice" items="${view.list}" varStatus="status">
 						<tr>
-							<td>${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</td>
-							<td><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc" class="notice-title">${notice.title}</a></td>
-							<td>${notice.userId}</td>
-							<td>${notice.createDt}</td>
+							<td><span class="text-muted">${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</span></td>
+							<td><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc" class="notice-title"><span class="text-muted">${notice.title}</span></a></td>
+							<td><span class="text-muted">${notice.userId}</span></td>
+							<td><span class="text-muted">${notice.createDt}</span></td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
 			</c:when>
 			<c:otherwise>
-				공지사항이 없습니다.
+				<span class="text-muted">공지사항이 없습니다.</span>
 			</c:otherwise>
 		</c:choose>
 			

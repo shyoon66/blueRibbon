@@ -22,7 +22,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 		Object user = session.getAttribute("user");
 	 
 		if(ObjectUtils.isEmpty(user)) {
-			response.sendRedirect("/");
+			response.sendRedirect("/login/");
 			return false;
 		} else {
 			session.setMaxInactiveInterval(30 * 60);
