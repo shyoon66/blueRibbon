@@ -3,6 +3,8 @@ package com.blueRibbon.notice.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +62,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/insert")
-	public String noticeInsert(Model model) throws Exception {
+	public String noticeInsert(Model model, HttpSession session) throws Exception {
+		model.addAttribute("user", session.getAttribute("user")); 
 		return "/notice/noticeInsert";
 	}
 	

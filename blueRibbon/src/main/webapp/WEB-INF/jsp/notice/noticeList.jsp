@@ -35,49 +35,52 @@
 	<!-- Page Content -->
 	<div id="wrap">
 		<div id="main" class="container">
-			<!-- Page Heading/Breadcrumbs -->
-			<h2 class="mt-4 mb-3">
-				공지사항
-			</h2>
-			<hr/>
-			
-			<c:choose>
-				<c:when test="${fn:length(view.list) > 0}">		
-					<table class="table table-sm table-hover">
-						<thead>
-							<tr>
-								<th class="text-center w-10">#</th>
-								<th class="text-center w-70">제목</th>
-								<th class="text-center w-5">작성자</th>
-								<th class="text-center w-5">작성일</th>
-							</tr>
-						</thead>
-						<tbody>
-						<c:forEach var="notice" items="${view.list}" varStatus="status">
-							<tr>
-								<td class="text-center"><span class="text-muted">${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</span></td>
-								<td><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc" class="notice-title"><span class="text-muted">${notice.title}</span></a></td>
-								<td class="text-center"><span class="text-muted">${notice.userId}</span></td>
-								<td class="text-center"><span class="text-muted">${notice.createDt}</span></td>
-							</tr>
-						</c:forEach>
-						</tbody>
-					</table>
-				</c:when>
-				<c:otherwise>
-					<span class="text-muted">공지사항이 없습니다.</span>
-				</c:otherwise>
-			</c:choose>
-				
- 			<hr/>
+			<div>
+				<!-- Page Heading/Breadcrumbs -->
+				<h2 class="mt-4 mb-3">
+					공지사항
+				</h2>
+			</div>
+ 			<div>
+				<div class="col-sm-12">
+					<c:choose>
+						<c:when test="${fn:length(view.list) > 0}">		
+							<table class="table table-sm table-hover">
+								<thead>
+									<tr class="row">
+										<th class="text-center col-sm-1">#</th>
+										<th class="text-center col-sm-7">제목</th>
+										<th class="text-center col-sm-2">작성자</th>
+										<th class="text-center col-sm-2">작성일</th>
+									</tr>
+								</thead>
+								<tbody>
+								<c:forEach var="notice" items="${view.list}" varStatus="status">
+									<tr class="row">
+										<td class="text-center col-sm-1"><span class="text-muted">${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</span></td>
+										<td class="col-sm-7"><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc" class="notice-title"><span class="text-muted">${notice.title}</span></a></td>
+										<td class="text-center col-sm-2"><span class="text-muted">${notice.userId}</span></td>
+										<td class="text-center col-sm-2"><span class="text-muted">${notice.createDt}</span></td>
+									</tr>
+								</c:forEach>
+								</tbody>
+							</table>
+						</c:when>
+						<c:otherwise>
+							<span class="text-muted">공지사항이 없습니다.</span>
+						</c:otherwise>
+					</c:choose>
+ 				</div>
+			</div>
+			<hr>
 			<a href="#" id="insertBtn" class="btn btn-primary btn-sm" style="float: right;">글쓰기</a>
 					
  			<div class="row justify-content-center align-items-center" style="margin-bottom: 20px;">
  				<div class="col-2">		
 					<select id="search" name="search" class="form-control form-control-sm">
-		 			<option value="">전체</option>
 		 			<option value="title">제목</option>
 		 			<option value="contents">내용</option>
+		 			<option value="">제목+내용</option>
 					</select>
 				</div>
  				<div class="col-4">
