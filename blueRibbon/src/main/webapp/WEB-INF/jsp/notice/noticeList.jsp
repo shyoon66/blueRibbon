@@ -70,20 +70,34 @@
 			</c:choose>
 				
  			<hr/>
-			<a href="#" id="insertBtn" class="btn btn-primary btn-sm pull-right" style="float: right;">글쓰기</a>
-			
- 			<div class="text-cetner">
-				<!-- Pagination -->
-				<ul class="pagination justify-content-center">
-					<li id="previous" class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-				
-					<c:forEach var="i" begin="${view.startPage}" step="1" end="${view.endPage}">
-						<li class="page-item"><a class="page-link pagenum" href="${urlNoticeList}?page=${i - 1}&size=${view.pageSize}&sort=createDt,desc">${i}</a></li>
-					</c:forEach>
+			<a href="#" id="insertBtn" class="btn btn-primary btn-sm" style="float: right;">글쓰기</a>
 					
-					<li id="next" class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-				</ul>
+ 			<div class="row justify-content-center align-items-center" style="margin-bottom: 20px;">
+ 				<div class="col-2">		
+					<select id="search" name="search" class="form-control form-control-sm">
+		 			<option value="">전체</option>
+		 			<option value="title">제목</option>
+		 			<option value="contents">내용</option>
+					</select>
+				</div>
+ 				<div class="col-4">
+					<input type="text" id="search_contents" name="search_contents" class="form-control form-control-sm"/>
+				</div>
+				<div class="col-sm-1">
+					<a href="#" id="searchBtn" class="btn btn-primary btn-sm" style="float: right;">검색</a>
+				</div>
 			</div>
+			
+			<!-- Pagination -->
+			<ul class="pagination justify-content-center">
+				<li id="previous" class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+			
+				<c:forEach var="i" begin="${view.startPage}" step="1" end="${view.endPage}">
+					<li class="page-item"><a class="page-link pagenum" href="${urlNoticeList}?page=${i - 1}&size=${view.pageSize}&sort=createDt,desc">${i}</a></li>
+				</c:forEach>
+				
+				<li id="next" class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+			</ul>
 		</div>
 		<!-- /.container -->
 	</div>

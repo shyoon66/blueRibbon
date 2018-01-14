@@ -5,6 +5,8 @@
 
 <jsp:include page="../common/header.jsp" />
 
+<link href="../css/sticky-footer-navbar.css" rel="stylesheet">
+
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -21,8 +23,9 @@
 	<input type="hidden" id="noticeId" name="noticeId" value="${param.noticeId}" />
 
 	<!-- Page Content -->
-	<form class="form-horizontal">
-		<div class="container">
+	<!-- <form class="form-horizontal"> -->
+	<div id="wrap">
+		<div id="main" class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h2 class="mt-4 mb-3">
 				공지사항
@@ -43,7 +46,7 @@
                 	<div class="row">
 						<label for="userId" class="col-sm-1 col-form-label">제목</label>
 						<div class="col-sm-11">
-							<input type="text" id="title" name="title" class="form-control" value="${view.title}" readonly="readonly"/>
+							<input type="text" id="title" name="title" class="form-control" value="${view.title}"/>
 						</div>
 					</div>
 				</div>
@@ -61,7 +64,8 @@
 			</div>
 		</div>
 		<!-- /.container -->
-	</form>
+	</div>
+	<!-- </form> -->
 
 	<jsp:include page="../common/footer.jsp" />
 </body>

@@ -48,9 +48,15 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/view")
-	public String noticeView(Model model, int noticeId, Pageable pageable) throws Exception {
+	public String noticeView(Model model, int noticeId) throws Exception {
 		model.addAttribute("view", noticeDao.findOne(noticeId));		
 		return "/notice/noticeView";
+	}
+	
+	@RequestMapping("/search")
+	public String noticeSearch(Model model, @RequestParam("search") String search, @RequestParam("search_contents") String search_contents, Pageable pageable) throws Exception {
+		model.addAttribute("view", noticeService.getSearchNoticeList(search, search_contents, pageable));
+		return "/notice/noticeList";
 	}
 	
 	@RequestMapping("/insert")

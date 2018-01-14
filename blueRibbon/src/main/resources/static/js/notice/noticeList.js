@@ -20,6 +20,13 @@ $(document).ready(function() {
 		location.href = '/notice/insert';
 	});
 	
+	$('#searchBtn').on('click', function(e) {
+		var search = $('#search').val();
+		var search_contents = $('#search_contents').val();
+		
+		location.href = '/notice/search?page=0&size=' + $('#pageSize').val() + '&sort=createDt,desc&search=' + search + '&search_contents=' + search_contents;
+	});
+	
 	init();
 });
 

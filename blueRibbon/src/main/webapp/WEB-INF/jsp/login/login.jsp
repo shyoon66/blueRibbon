@@ -6,9 +6,7 @@
 
 <jsp:include page="../common/header.jsp" />
 
-<style>
-
-</style>
+<link href="../css/sticky-footer-navbar.css" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
@@ -17,13 +15,15 @@
 
 <body>
 	<!-- Page Content -->
-	<div class="container">
-		<!-- Page Heading/Breadcrumbs -->
-		<h2 class="mt-4 mb-3">
-			로그인
-		</h2>
-		<hr/>
-		<a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=099903da7a7fee19ad2e33d79a52e614&redirect_uri=http://localhost:8080/login/kakaologin&response_type=code"><img src="../image/login/kakao_account_login_btn_medium_narrow.png"/></a>
+	<div id="wrap">
+		<div id="main" class="container">
+			<!-- Page Heading/Breadcrumbs -->
+			<h2 class="mt-4 mb-3">
+				로그인
+			</h2>
+			<hr/>
+			<a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=099903da7a7fee19ad2e33d79a52e614&redirect_uri=http://localhost:8080/login/kakaologin&response_type=code"><img src="../image/login/kakao_account_login_btn_medium_narrow.png"/></a>
+		</div>
 	</div>
 	<!-- /.container -->
 	
