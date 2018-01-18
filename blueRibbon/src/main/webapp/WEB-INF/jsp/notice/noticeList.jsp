@@ -57,37 +57,42 @@
 								<tbody>
 								<c:forEach var="notice" items="${view.list}" varStatus="status">
 									<tr class="row">
-										<td class="text-center col-sm-1"><span class="text-muted">${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</span></td>
-										<td class="col-sm-7"><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc" class="notice-title"><span class="text-muted">${notice.title}</span></a></td>
-										<td class="text-center col-sm-2"><span class="text-muted">${notice.userId}</span></td>
-										<td class="text-center col-sm-2"><span class="text-muted">${notice.createDt}</span></td>
+										<td class="text-center col-sm-1">${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</td>
+										<td class="col-sm-7"><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc" class="notice-title">${notice.title}</a></td>
+										<td class="text-center col-sm-2">${notice.userId}</td>
+										<td class="text-center col-sm-2">${notice.createDt}</td>
 									</tr>
 								</c:forEach>
 								</tbody>
 							</table>
 						</c:when>
 						<c:otherwise>
-							<span class="text-muted">공지사항이 없습니다.</span>
+						<hr>
+							공지사항이 없습니다.
+						<hr>
 						</c:otherwise>
 					</c:choose>
  				</div>
 			</div>
-			<hr>
-			<a href="#" id="insertBtn" class="btn btn-primary btn-sm" style="float: right;">글쓰기</a>
-					
- 			<div class="row justify-content-center align-items-center" style="margin-bottom: 20px;">
- 				<div class="col-2">		
-					<select id="search" name="search" class="form-control form-control-sm">
-		 			<option value="title">제목</option>
-		 			<option value="contents">내용</option>
-		 			<option value="">제목+내용</option>
-					</select>
-				</div>
- 				<div class="col-4">
-					<input type="text" id="search_contents" name="search_contents" class="form-control form-control-sm"/>
-				</div>
-				<div class="col-sm-1">
-					<a href="#" id="searchBtn" class="btn btn-primary btn-sm" style="float: right;">검색</a>
+			<!-- <hr> -->
+			<div style="margin-top: 40px;">
+				<a href="#" id="insertBtn" class="btn btn-primary btn-sm" style="float: right;">글쓰기</a>		
+	 			<div class="row justify-content-center align-items-center" style="margin-bottom: 20px;">
+	 				<div class="col-2">		
+						<select id="search" name="search" class="form-control form-control-sm">
+			 			<option value="title">제목</option>
+			 			<option value="contents">내용</option>
+			 			<option value="">제목+내용</option>
+						</select>
+					</div>
+					<div class="col-sm-4">
+	                	<input type="text" class="form-control form-control-sm">
+	                </div>
+	                <div>
+	                	<span>
+	                		<a href="#" id="searchBtn" class="btn btn-secondary btn-sm">검색</a>
+	                	</span>
+	              	</div>
 				</div>
 			</div>
 			
@@ -104,7 +109,5 @@
 		</div>
 		<!-- /.container -->
 	</div>
-	
-	<jsp:include page="../common/footer.jsp" />
 </body>
-</html>
+<jsp:include page="../common/footer.jsp" />
