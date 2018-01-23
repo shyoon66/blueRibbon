@@ -22,6 +22,7 @@
   </head>
   <body>
   	<input type="hidden" id="login_type" name="login_type" value="${login_type}" />
+  	<input type="hidden" id="pagesize" name="pagesize" value="${pageSize}" />
   	
 	<!-- Navigation -->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">

@@ -8,5 +8,5 @@ html, body {
 	
 #main {
 	overflow: auto;
-	padding-bottom: 150px; /* this needs to be bigger than footer height*/
+	padding-bottom: 150px; /* this needs to be bigger than footer height */
 }

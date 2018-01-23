@@ -45,7 +45,7 @@ public class NoticeController {
 	
 	@RequestMapping("/list")
 	public String noticeList(Model model, Pageable pageable) throws Exception {
-		model.addAttribute("view", noticeService.getNoticeList(pageable));		
+		model.addAttribute("view", noticeService.getNoticeList(pageable));
 		return "/notice/noticeList";
 	}
 	

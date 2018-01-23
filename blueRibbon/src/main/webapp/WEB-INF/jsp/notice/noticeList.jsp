@@ -80,13 +80,13 @@
 	 			<div class="row justify-content-center align-items-center" style="margin-bottom: 20px;">
 	 				<div class="col-2">		
 						<select id="search" name="search" class="form-control form-control-sm">
-			 			<option value="title">제목</option>
-			 			<option value="contents">내용</option>
-			 			<option value="">제목+내용</option>
+				 			<option value="title">제목</option>
+				 			<option value="contents">내용</option>
+				 			<option value="">제목+내용</option>
 						</select>
 					</div>
 					<div class="col-sm-4">
-	                	<input type="text" class="form-control form-control-sm">
+	                	<input type="text" id="search_contents" class="form-control form-control-sm" value=""/>
 	                </div>
 	                <div>
 	                	<span>
