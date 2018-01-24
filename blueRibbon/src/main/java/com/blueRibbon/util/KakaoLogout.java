@@ -3,8 +3,6 @@ package com.blueRibbon.util;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;

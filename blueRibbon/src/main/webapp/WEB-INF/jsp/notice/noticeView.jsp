@@ -56,7 +56,7 @@
 				<div class="col-md-12">${view.contents}</div>
 			</div>
 			<hr>	 		
-			<div class="text-right">
+			<div class="text-right" style="margin-bottom: 10px;">
 				<a href="#" id="updateBtn" class="btn btn-primary btn-sm">수정</a>
 				<a href="#" id="deleteBtn" class="btn btn-primary btn-sm">삭제</a>
 				<a href="#" id="listBtn" class="btn btn-primary btn-sm">목록</a>

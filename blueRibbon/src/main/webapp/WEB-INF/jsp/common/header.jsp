@@ -66,7 +66,7 @@
 	          </a>
 	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownOnline">
 	            <a class="dropdown-item" href="#">질의응답</a>
-	            <a class="dropdown-item" href="#">모집일정</a>
+	            <a class="dropdown-item" href="/consult/recruitmentScheduleList?page=0&size=${pageSize}&sort=createDt,desc">모집일정</a>
 	            <a class="dropdown-item" href="/consult/faq">자주묻는 질문</a>
 	          </div>
 	        </li>

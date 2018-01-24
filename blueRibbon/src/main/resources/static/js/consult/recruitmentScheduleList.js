@@ -17,14 +17,14 @@ $(document).ready(function() {
 	});
 	
 	$('#insertBtn').on('click', function(e) {
-		location.href = '/notice/insert';
+		location.href = '/consult/recruitmentSchedule/insert';
 	});
 	
 	$('#searchBtn').on('click', function(e) {
 		var search = $('#search').val();
 		var search_contents = $('#search_contents').val();
 		
-		location.href = '/notice/search?page=0&size=' + $('#pageSize').val() + '&sort=createDt,desc&search=' + search + '&search_contents=' + search_contents;
+		location.href = '/consult/recruitmentSchedule/search?page=0&size=' + $('#pageSize').val() + '&sort=createDt,desc&search=' + search + '&search_contents=' + search_contents;
 	});
 	
 	init();
@@ -62,7 +62,7 @@ function pageBtn() {
 		$previous.children().attr('href', '#');
 	} else {
 		$previous.removeClass('disabled');	
-		var url = '/notice/list?page=' + (startPageNum - 2) + '&size=' + $('#pageSize').val() + '&sort=createDt,desc';
+		var url = '/consult/recruitmentScheduleList?page=' + (startPageNum - 2) + '&size=' + $('#pageSize').val() + '&sort=createDt,desc';
 		$previous.children().attr('href', url);
 	}
 	
@@ -71,12 +71,15 @@ function pageBtn() {
 	var $next = $('#next');
 	var totalPages = parseInt($('#totalPages').val());
 	
+	console.log($("#startPage").val());
+	console.log($("#endPage").val());
+	
 	if(totalPages == endPageNum || $("#startPage").val() == $("#endPage").val()) {
 		$next.addClass('disabled');
 		$next.children().attr('href', '#');
 	} else {
 		$next.removeClass('disabled');
-		var url = '/notice/list?page=' + endPageNum + '&size=' + $('#pageSize').val() + '&sort=createDt,desc';
+		var url = '/consult/recruitmentScheduleList?page=' + endPageNum + '&size=' + $('#pageSize').val() + '&sort=createDt,desc';
 		$next.children().attr('href', url);
 	}
 }

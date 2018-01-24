@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
@@ -13,9 +15,13 @@ import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.blueRibbon.consult.model.RecruitmentSchedule;
+import com.blueRibbon.notice.model.Notice;
 import com.blueRibbon.notice.model.NoticeFile;
 
 @Service
@@ -25,7 +31,61 @@ public class CommonService {
 	@Value("${notice.path}")
 	private String noticePath;
 	
+	@Value("${page.size}")
+	private int pageSize;
+	
 	private static final Logger logger = LoggerFactory.getLogger(CommonService.class);
+	
+	@SuppressWarnings("rawtypes")
+	public Map<String, Object> getList(Page postPage, Pageable pageable) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", postPage.getContent());
+		map.put("page", postPage.getNumber());
+		map.put("numOfElements", postPage.getNumberOfElements());
+		map.put("pageSize", pageSize);
+		map.put("divNum", postPage.getNumber() / pageSize);
+		map.put("totalPages", postPage.getTotalPages());
+		map.putAll(getStartAndEndPageNum(postPage.getNumber() + 1, postPage.getTotalPages()));
+
+		return map;
+	}
+	
+	private Map<String, Integer> getStartAndEndPageNum(int page, int totalPage) throws Exception {
+		int div = page / pageSize;
+		int startPage = 0;
+		int endPage = 0;
+		Map<String, Integer> pageMap = new HashMap<String, Integer>();
+
+		if (totalPage == 0) {
+			startPage = 1;
+			endPage = 1;
+		} else {
+			if (totalPage <= pageSize) {
+				startPage = page - (page - 1);
+				endPage = totalPage;
+			} else if (page - (pageSize * div) == 0) {
+				if ((div - 1) == 0) {
+					startPage = page - (page - 1);
+				} else {
+					startPage = page - (pageSize - 1);
+				}
+
+				endPage = page;
+			} else {
+				startPage = pageSize * div + 1;
+				endPage = pageSize * (div + 1);
+
+				if (totalPage <= endPage) {
+					endPage = totalPage;
+				}
+			}
+		}
+
+		pageMap.put("startPage", startPage);
+		pageMap.put("endPage", endPage);
+
+		return pageMap;
+	}
 	
 	public void getTempImage(String div, String fileNm, HttpServletResponse response) throws Exception {
 		String path = "";

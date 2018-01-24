@@ -47,8 +47,7 @@ public class NoticeService {
 		return noticeMap;
 	}
 
-	public Map<String, Object> getSearchNoticeList(String search, String search_contents, Pageable pageable)
-			throws Exception {
+	public Map<String, Object> getSearchNoticeList(String search, String search_contents, Pageable pageable) throws Exception {
 		Page<Notice> postPage = null;
 
 		if ("".equals(search)) {

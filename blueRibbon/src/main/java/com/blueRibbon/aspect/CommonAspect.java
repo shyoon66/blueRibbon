@@ -14,7 +14,7 @@ public class CommonAspect {
 	@Value("${page.size}")
 	private int pageSize;
 	
-	@Around("within(com.blueRibbon.notice.controller.*)")
+	@Around("execution(* com.blueRibbon.*.controller..*.*(..))")
 	public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 		Object[] args = joinPoint.getArgs();
 		
