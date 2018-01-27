@@ -27,9 +27,9 @@
 	<div id="wrap">
 		<div id="main" class="container">
 			<!-- Page Heading/Breadcrumbs -->
-			<h2 class="mt-4 mb-3">
+			<h3 class="mt-4 mb-3">
 				공지사항
-			</h2>
+			</h3>
 			<hr>
 			<div class="row">
 				<div class="form-group form-group-sm col-sm-4">

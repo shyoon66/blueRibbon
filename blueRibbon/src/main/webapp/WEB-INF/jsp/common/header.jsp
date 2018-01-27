@@ -10,12 +10,12 @@
     <meta name="author" content="">
 
     <title>수빅블루리본어학원</title>
+    
+    <!-- Custom styles for this template -->
+    <link href="../css/modern-business.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../css/modern-business.css" rel="stylesheet">
     
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../js/common/header.js"></script>
@@ -75,7 +75,7 @@
 	        	사진/동영상
 	          </a>
 	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownOnline">
-	            <a class="dropdown-item" href="#">학원사진</a>
+	            <a class="dropdown-item" href="/multimedia/blueRibbonPhotoList">학원사진</a>
 	            <a class="dropdown-item" href="#">원룸사진</a>
 	            <a class="dropdown-item" href="#">수업사진</a>
 	            <a class="dropdown-item" href="#">선생님사진</a>

@@ -37,49 +37,26 @@
 		<div id="main" class="container">
 			<div>
 				<!-- Page Heading/Breadcrumbs -->
-				<h3 class="mt-4 mb-3">
-					공지사항
-				</h3>
+				<h4 class="mt-4 mb-3">
+					학원사진
+				</h4>
 			</div>
- 			<div>
-				<div class="col-sm-12">
-					<c:choose>
-						<c:when test="${fn:length(view.list) > 0}">		
-							<table class="table table-sm table-hover">
-								<thead>
-									<tr class="row">
-										<th class="text-center col-sm-1">#</th>
-										<th class="text-center col-sm-7">제목</th>
-										<th class="text-center col-sm-2">작성자</th>
-										<th class="text-center col-sm-2">작성일</th>
-									</tr>
-								</thead>
-								<tbody>
-								<c:forEach var="notice" items="${view.list}" varStatus="status">
-									<tr class="row">
-										<td class="text-center col-sm-1">${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</td>
-										<td class="col-sm-7"><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc" class="notice-title">${notice.title}</a></td>
-										<td class="text-center col-sm-2">${notice.userId}</td>
-										<td class="text-center col-sm-2">${notice.createDt}</td>
-									</tr>
-								</c:forEach>
-								</tbody>
-							</table>
-						</c:when>
-						<c:otherwise>
-						<hr>
-							공지사항이 없습니다.
-						<hr>
-						</c:otherwise>
-					</c:choose>
- 				</div>
+ 			<div class="row">
+				<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+							<h4 class="card-title">
+								<a href="#">Project One</a>
+							</h4>
+							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+						</div>
+					</div>
+				</div>
 			</div>
 			<!-- <hr> -->
-			
 			<div style="margin-top: 40px;">
-				<c:if test="${user.authority eq 'A'}">
-					<a href="#" id="insertBtn" class="btn btn-primary btn-sm" style="float: right;">글쓰기</a>
-				</c:if>		
+				<a href="#" id="insertBtn" class="btn btn-primary btn-sm" style="float: right;">글쓰기</a>		
 	 			<div class="row justify-content-center align-items-center" style="margin-bottom: 20px;">
 	 				<div class="col-2">		
 						<select id="search" name="search" class="form-control form-control-sm">

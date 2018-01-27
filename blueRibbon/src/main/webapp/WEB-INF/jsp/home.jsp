@@ -56,7 +56,7 @@
 	      <div class="row">
 	        <div class="col-lg-4 mb-4">
 	          <div class="card h-100">
-	            <h6 class="card-header">공지사항</h6>
+	            <h6 class="card-header"><b>공지사항</b></h6>
 	            <div class="card-body">
 	              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
 	            </div>
@@ -67,7 +67,7 @@
 	        </div>
 	        <div class="col-lg-4 mb-4">
 	          <div class="card h-100">
-	            <h6 class="card-header">모집일정</h6>
+	            <h6 class="card-header"><b>모집일정</b></h6>
 	            <div class="card-body">
 	              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
 	            </div>
@@ -78,7 +78,7 @@
 	        </div>
 	        <div class="col-lg-4 mb-4">
 	          <div class="card h-100">
-	            <h6 class="card-header">질의응답</h6>
+	            <h6 class="card-header"><b>질의응답</b></h6>
 	            <div class="card-body">
 	              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
 	            </div>
@@ -91,7 +91,7 @@
 	      <!-- /.row -->
 	
 	      <!-- Portfolio Section -->
-	      <h2>학원 미리보기</h2>
+	      <h3>학원 미리보기</h3>
 	
 	      <div class="row">
 	        <div class="col-lg-4 col-sm-6 portfolio-item">

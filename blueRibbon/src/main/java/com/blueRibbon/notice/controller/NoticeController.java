@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.blueRibbon.common.service.CommonService;
+import com.blueRibbon.login.model.KakaoUser;
 import com.blueRibbon.notice.dao.NoticeDao;
 import com.blueRibbon.notice.model.Notice;
 import com.blueRibbon.notice.model.NoticeFile;
@@ -43,9 +44,20 @@ public class NoticeController {
 	@Value("${page.size}")
 	private int pageSize;
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/list")
-	public String noticeList(Model model, Pageable pageable) throws Exception {
+	public String noticeList(Model model, Pageable pageable, HttpSession session) throws Exception {
 		model.addAttribute("view", noticeService.getNoticeList(pageable));
+		Object userSession = session.getAttribute("user");
+		
+		if(userSession != null) {
+			if(userSession instanceof KakaoUser) {
+				model.addAttribute("user", (KakaoUser) userSession);
+			}
+			model.addAttribute("login_type", session.getAttribute("login_type"));
+		}
+		
+		logger.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@ model = " + model);
 		return "/notice/noticeList";
 	}
 	

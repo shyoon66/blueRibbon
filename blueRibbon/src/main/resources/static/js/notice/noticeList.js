@@ -2,7 +2,7 @@
  * 
  */
 
-$(document).ready(function() {	
+$(document).ready(function() {
 	$('a.page-link').on('click', function(e) {
 		var $li = $(this).closest('ul').children();
 		var page = parseInt($('#page').val());
@@ -28,6 +28,8 @@ $(document).ready(function() {
 	});
 	
 	init();
+	
+	console.log("${user}");
 });
 
 function init() {
