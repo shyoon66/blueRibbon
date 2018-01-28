@@ -21,6 +21,7 @@ public class LoginService {
 	
 	public KakaoUser insertKakaoUser(KakaoUser kakaoUser) throws Exception {
 		String user_id = kakaoUser.getUserId();
+		kakaoUser.setAuthority("A");
 		
 /*		if("681910979".equals(user_id)) {
 			kakaoUser.setAuthority("A");

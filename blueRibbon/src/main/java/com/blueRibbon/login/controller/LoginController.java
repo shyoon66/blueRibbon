@@ -46,7 +46,6 @@ public class LoginController {
 				session.setAttribute("login_type", "kakao");
 				loginService.insertKakaoUser(kakaoUser);				
 			}
-
 		} catch(Exception e) {
 			e.printStackTrace();
 			throw new Exception(e.getMessage());

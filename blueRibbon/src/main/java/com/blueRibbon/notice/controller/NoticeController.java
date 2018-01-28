@@ -44,19 +44,23 @@ public class NoticeController {
 	@Value("${page.size}")
 	private int pageSize;
 	
-	@SuppressWarnings("unchecked")
+	
 	@RequestMapping("/list")
 	public String noticeList(Model model, Pageable pageable, HttpSession session) throws Exception {
 		model.addAttribute("view", noticeService.getNoticeList(pageable));
 		Object userSession = session.getAttribute("user");
+		Map<String, String> userMap = new HashMap<String, String>();
 		
-		if(userSession != null) {
-			if(userSession instanceof KakaoUser) {
-				model.addAttribute("user", (KakaoUser) userSession);
-			}
-			model.addAttribute("login_type", session.getAttribute("login_type"));
+		if(userSession instanceof KakaoUser) {
+			logger.debug("############################");
+			KakaoUser kakaoUser = (KakaoUser) userSession;
+			userMap.put("user_id", kakaoUser.getUserId());
+			userMap.put("user_name", kakaoUser.getNickname());
+			userMap.put("authority", kakaoUser.getAuthority());
+			model.addAttribute("user", userMap);
 		}
 		
+		model.addAttribute("login_type", session.getAttribute("login_type"));
 		logger.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@ model = " + model);
 		return "/notice/noticeList";
 	}
