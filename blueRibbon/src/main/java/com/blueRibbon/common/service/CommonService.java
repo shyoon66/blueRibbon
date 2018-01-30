@@ -20,8 +20,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.blueRibbon.consult.model.RecruitmentSchedule;
-import com.blueRibbon.notice.model.Notice;
 import com.blueRibbon.notice.model.NoticeFile;
 
 @Service
@@ -31,13 +29,10 @@ public class CommonService {
 	@Value("${notice.path}")
 	private String noticePath;
 	
-	@Value("${page.size}")
-	private int pageSize;
-	
 	private static final Logger logger = LoggerFactory.getLogger(CommonService.class);
 	
 	@SuppressWarnings("rawtypes")
-	public Map<String, Object> getList(Page postPage, Pageable pageable) throws Exception {
+	public Map<String, Object> getList(Page postPage, Pageable pageable, int pageSize) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", postPage.getContent());
 		map.put("page", postPage.getNumber());
@@ -45,12 +40,12 @@ public class CommonService {
 		map.put("pageSize", pageSize);
 		map.put("divNum", postPage.getNumber() / pageSize);
 		map.put("totalPages", postPage.getTotalPages());
-		map.putAll(getStartAndEndPageNum(postPage.getNumber() + 1, postPage.getTotalPages()));
+		map.putAll(getStartAndEndPageNum(postPage.getNumber() + 1, postPage.getTotalPages(), pageSize));
 
 		return map;
 	}
 	
-	private Map<String, Integer> getStartAndEndPageNum(int page, int totalPage) throws Exception {
+	private Map<String, Integer> getStartAndEndPageNum(int page, int totalPage, int pageSize) throws Exception {
 		int div = page / pageSize;
 		int startPage = 0;
 		int endPage = 0;

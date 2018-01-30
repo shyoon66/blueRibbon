@@ -44,7 +44,7 @@
  			<div>
 				<div class="col-sm-12">
 					<c:choose>
-						<c:when test="${fn:length(view.list) > 0}">		
+						<c:when test="${fn:length(view.list) > 0}">
 							<table class="table table-sm table-hover">
 								<thead>
 									<tr class="row">
@@ -68,7 +68,7 @@
 						</c:when>
 						<c:otherwise>
 						<hr>
-							공지사항이 없습니다.
+							<p class="text-center">공지사항이 없습니다.</p>
 						<hr>
 						</c:otherwise>
 					</c:choose>

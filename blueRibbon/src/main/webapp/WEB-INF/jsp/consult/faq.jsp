@@ -15,15 +15,15 @@
 	  <div id="main" class="container">
 		<div>
 			<!-- Page Heading/Breadcrumbs -->
-			<h2 class="mt-4 mb-3">
+			<h3 class="mt-4 mb-3">
 				자주 묻는 질문
-			</h2>
+			</h3>
 		</div>
 	    <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
 	      <div class="card">
 	        <div class="card-header" role="tab" id="headingOne">
 	          <h5 class="mb-0">
-	            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">블루리본이어야만 하는 이유 7 가지</a>
+	            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">블루리본이어야만 하는 7가지 이유</a>
 	          </h5>
 	        </div>
 	

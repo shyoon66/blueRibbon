@@ -75,7 +75,7 @@
 	        	사진/동영상
 	          </a>
 	          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownOnline">
-	            <a class="dropdown-item" href="/multimedia/blueRibbonPhotoList">학원사진</a>
+	            <a class="dropdown-item" href="/multimedia/blueRibbonPhotoList?page=0&size=${pageSize}&sort=createDt,desc">학원사진</a>
 	            <a class="dropdown-item" href="#">원룸사진</a>
 	            <a class="dropdown-item" href="#">수업사진</a>
 	            <a class="dropdown-item" href="#">선생님사진</a>

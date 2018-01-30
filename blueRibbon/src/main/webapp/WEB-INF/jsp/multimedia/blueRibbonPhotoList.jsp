@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../common/staticImport.jsp" %>
 
-<c:url var="urlNoticeList" 		value="/notice/list" />
-<c:url var="urlNoticeView" 		value="/notice/view" />
+<c:url var="urlBlueRibbonPhotoList"		value="/multimedia/blueRibbonPhotoList" />
+<c:url var="urlBlueRibbonPhotoView"		value="/multimedia/blueRibbonPhotoView" />
 
 <jsp:include page="../common/header.jsp" />
 
@@ -21,7 +21,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../js/notice/noticeList.js"></script>
+<script src="../js/multimedia/blueRibbonPhotoList.js"></script>
 
 <body>
 	<input type="hidden" id="page" name="page" value="${view.page}" />
@@ -41,18 +41,30 @@
 					학원사진
 				</h4>
 			</div>
+			<hr>
  			<div class="row">
-				<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="#">Project One</a>
-							</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-						</div>
-					</div>
-				</div>
+ 				<c:choose>
+					<c:when test="${fn:length(view.list) > 0}">
+						<c:forEach var="multimedia" items="${view.list}" varStatus="status">
+							<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+								<div class="card h-100">
+									<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+									<div class="card-body">
+										<h4 class="card-title">
+											<a href="#">${multimedia.title}</a>
+										</h4>
+										<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<hr>
+							학원사진이 없습니다.
+						<hr>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<!-- <hr> -->
 			<div style="margin-top: 40px;">
@@ -81,7 +93,7 @@
 				<li id="previous" class="page-item"><a class="page-link" href="#" aria-label="Previous"><span class="page-font" aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
 			
 				<c:forEach var="i" begin="${view.startPage}" step="1" end="${view.endPage}">
-					<li class="page-item"><a class="page-link pagenum" href="${urlNoticeList}?page=${i - 1}&size=${view.pageSize}&sort=createDt,desc"><span class="page-font" aria-hidden="true">${i}</span></a></li>
+					<li class="page-item"><a class="page-link pagenum" href="${urlBlueRibbonPhotoList}?page=${i - 1}&size=${view.pageSize}&sort=createDt,desc"><span class="page-font" aria-hidden="true">${i}</span></a></li>
 				</c:forEach>
 				
 				<li id="next" class="page-item"><a class="page-link" href="#" aria-label="Next"><span class="page-font" aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>

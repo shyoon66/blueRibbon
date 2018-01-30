@@ -29,6 +29,9 @@ public class ConsultController {
 	@Autowired
 	private ConsultDao consultDao;
 	
+	@Value("${page.size}")
+	private int pageSize;
+	
 	private static final Logger logger = LoggerFactory.getLogger(ConsultController.class);
 	
 	@RequestMapping("/faq")
@@ -39,7 +42,7 @@ public class ConsultController {
 	@RequestMapping("/recruitmentScheduleList")
 	public String recruitmentScheduleList(Model model, Pageable pageable) throws Exception {
 		Page<RecruitmentSchedule> postPage = consultDao.findAll(pageable);
-		model.addAttribute("view", commonService.getList(postPage, pageable));
+		model.addAttribute("view", commonService.getList(postPage, pageable, pageSize));
 		return "consult/recruitmentScheduleList";
 	}
 }
