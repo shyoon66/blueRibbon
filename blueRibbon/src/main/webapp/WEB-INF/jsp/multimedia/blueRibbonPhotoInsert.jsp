@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../common/staticImport.jsp" %>
 
-<c:url var="urlNoticeList" value="/notice/list" />
+<c:url var="urlBlueRibbonPhotoList" value="/multimedia/blueRibbonPhotoList" />
 
 <jsp:include page="../common/header.jsp" />
 
@@ -16,55 +16,49 @@
 <script src="../summernote/summernote-bs4.js"></script>
 <script src="../summernote/lang/summernote-ko-KR.js"></script>
 
-<script src="../js/notice/noticeUpdate.js"></script>
+<script src="../js/notice/blueRibbonPhotoInsert.js"></script>
 
 <body>
-	<input type="hidden" id="page" name="page" value="${param.page}" />
-	<input type="hidden" id="noticeId" name="noticeId" value="${param.noticeId}" />
-	<input type="hidden" id="userId" name="userId" value="${user.userId}" />
+	<%-- <input type="hidden" id="page" name="page" value="${view.page}" /> --%>
 
 	<!-- Page Content -->
-	<!-- <form class="form-horizontal"> -->
 	<div id="wrap">
 		<div id="main" class="container">
 			<!-- Page Heading/Breadcrumbs -->
-			<h2 class="mt-4 mb-3">
-				공지사항
-			</h2>
-			<hr>
+			<h3 class="mt-4 mb-3">
+				학원사진
+			</h3>
+			<hr>		
 			<div class="row">
 				<div class="form-group form-group-sm col-sm-4">
-                	<div class="row">
+					<div class="row">
 						<label for="userId" class="col-sm-3 col-form-label">글쓴이</label>
 						<div class="col-sm-6">
-							<input type="text" id="userName" name="userName" class="form-control" value="${view.userName}" readonly="readonly"/>
+							<input type="text" id="userId" name="userId" class="form-control form-control-sm" value="${user.nickname}" readonly="readonly"/>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group form-group-sm col-sm-12">
-                	<div class="row">
+					<div class="row">
 						<label for="userId" class="col-sm-1 col-form-label">제목</label>
 						<div class="col-sm-11">
-							<input type="text" id="title" name="title" class="form-control" value="${view.title}"/>
+							<input type="text" id="title" name="title" class="form-control" value=""/>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
+				<hr>
 				<div class="col-md-12">
-					<div id="summernote">${view.contents}</div>
+					<div id="summernote"></div>
 				</div>
 			</div>
 			<div class="text-right" style="margin-bottom: 20px; margin-top: 20px;">
-				<a href="#" id="updateBtn" class="btn btn-primary btn-sm">저장</a>
-				<a href="#" id="listBtn" class="btn btn-primary btn-sm">목록</a>
+				<a href="#" id="insertBtn" class="btn btn-primary">등록</a>
 			</div>
 		</div>
-		<!-- /.container -->
 	</div>
-	<!-- </form> -->
+	<!-- /.container -->
 
 	<jsp:include page="../common/footer.jsp" />
 </body>

@@ -2,24 +2,16 @@
  * 
  */
 
+var _fileList = [];
+
 $(document).ready(function() {
 	$('#summernote').summernote({
 		lang: 'ko-KR',
-		height: 300,
-		minHeight: 350,
+		height: 515,
+		minHeight: 515,
 		maxHeight: null,
 		dialogsFade: true,
-		focus: false,
-		toolbar: [
-			// [groupName, [list of button]]
-			['style', ['bold', 'italic', 'underline', 'clear']],
-			['font', ['strikethrough', 'superscript', 'subscript']],
-			['fontsize', ['fontsize']],
-			['color', ['color']],
-			['para', ['ul', 'ol', 'paragraph']],
-			['height', ['height']],
-			['insert', ['table', 'picture', 'link', 'video']]
-		],
+		focus: true,
 		callbacks: {
 			onImageUpload: function(files) {
 				for(var i = files.length - 1; i >= 0; i--) {
@@ -36,13 +28,11 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('#title').focus();
-	
-	$('#listBtn').on('click', function(e) {
-		history.back();
+	$('a.notice-title').mouseover(function() {
+		$(this).css('color', 'blue');
 	});
 	
-	$('#updateBtn').on('click', function(e) {
+	$('#insertBtn').on('click', function(e) {
 		valid();
 	});
 });
@@ -58,8 +48,8 @@ function validImage(type, extension, size) {
 		return false;
 	}
 	
-	if((size / 1024 / 1024) > 20) {
-		alert('업로드는 20MB까지 가능합니다.');
+	if((size / 1024 / 1024) > 10) {
+		alert('이미지 업로드는 10MB까지 가능합니다.');
 		return false;
 	}
 	
@@ -79,7 +69,6 @@ function uploadImage(file) {
 		enctype: 'multipart/form-data',
 		processData: false,
 		success: function(rJson) {
-			console.log(rJson);
 			if(rJson.success) {
 				$('#summernote').summernote('insertImage', rJson.url);
 			} else {
@@ -90,7 +79,7 @@ function uploadImage(file) {
 }
 
 function valid() {
-	if($('#title').val() == '') {
+/*	if($('#title').val() == '') {
 		alert('제목을 입력해 주세요.');
 		return;
 	}
@@ -103,21 +92,29 @@ function valid() {
 	if($('#summernote').summernote('isEmpty')) {
 		alert('내용을 입력해 주세요.');
 		return;
-	}
+	}*/
 	
-	update();
+	insert();
 }
 
-function update() {
-	var url = '/notice/updateProc.json';
-	var noticeId = $('#noticeId').val();
+function insert() {
+	var url = '/multimedia/insertProc.json';
 	var params = {
-		noticeId: noticeId,
+		kind: 'B',
 		title: $('#title').val(),
 		contents: $('#summernote').summernote('code'),
-		userId: $('#userId').val(),
-		userName: $('#userName').val()
+		userId: $('#userId').val()
 	};
+	
+/*	$.ajax({
+        type: 'POST',
+        url: url,
+        data: params,
+        success: function(rJson, status, xhr) {
+           console.log(status);
+           console.log(xhr);
+        }
+    });*/
 	
 	$.post(url, params, function(rJson) {
 		if(rJson.success == undefined) {

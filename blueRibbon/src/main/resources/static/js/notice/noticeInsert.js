@@ -11,7 +11,17 @@ $(document).ready(function() {
 		minHeight: 515,
 		maxHeight: null,
 		dialogsFade: true,
-		focus: true,
+		focus: false,
+		toolbar: [
+			// [groupName, [list of button]]
+			['style', ['bold', 'italic', 'underline', 'clear']],
+			['font', ['strikethrough', 'superscript', 'subscript']],
+			['fontsize', ['fontsize']],
+			['color', ['color']],
+			['para', ['ul', 'ol', 'paragraph']],
+			['height', ['height']],
+			['insert', ['table', 'picture', 'link', 'video']]
+		],
 		callbacks: {
 			onImageUpload: function(files) {
 				for(var i = files.length - 1; i >= 0; i--) {
@@ -35,6 +45,8 @@ $(document).ready(function() {
 	$('#insertBtn').on('click', function(e) {
 		valid();
 	});
+	
+	$('#title').focus();
 });
 
 function validImage(type, extension, size) {
@@ -79,7 +91,7 @@ function uploadImage(file) {
 }
 
 function valid() {
-/*	if($('#title').val() == '') {
+	if($('#title').val() == '') {
 		alert('제목을 입력해 주세요.');
 		return;
 	}
@@ -92,7 +104,7 @@ function valid() {
 	if($('#summernote').summernote('isEmpty')) {
 		alert('내용을 입력해 주세요.');
 		return;
-	}*/
+	}
 	
 	insert();
 }
@@ -101,19 +113,8 @@ function insert() {
 	var url = '/notice/insertProc.json';
 	var params = {
 		title: $('#title').val(),
-		contents: $('#summernote').summernote('code'),
-		userId: $('#userId').val()
+		contents: $('#summernote').summernote('code')
 	};
-	
-/*	$.ajax({
-        type: 'POST',
-        url: url,
-        data: params,
-        success: function(rJson, status, xhr) {
-           console.log(status);
-           console.log(xhr);
-        }
-    });*/
 	
 	$.post(url, params, function(rJson) {
 		if(rJson.success == undefined) {

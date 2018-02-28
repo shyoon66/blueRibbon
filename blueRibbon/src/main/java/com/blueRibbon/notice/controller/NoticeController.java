@@ -46,22 +46,10 @@ public class NoticeController {
 	
 	
 	@RequestMapping("/list")
-	public String noticeList(Model model, Pageable pageable, HttpSession session) throws Exception {
+	public String noticeList(Model model, Pageable pageable) throws Exception {
 		model.addAttribute("view", noticeService.getNoticeList(pageable));
-		Object userSession = session.getAttribute("user");
-		Map<String, String> userMap = new HashMap<String, String>();
 		
-		if(userSession instanceof KakaoUser) {
-			logger.debug("############################");
-			KakaoUser kakaoUser = (KakaoUser) userSession;
-			userMap.put("user_id", kakaoUser.getUserId());
-			userMap.put("user_name", kakaoUser.getNickname());
-			userMap.put("authority", kakaoUser.getAuthority());
-			model.addAttribute("user", userMap);
-		}
-		
-		model.addAttribute("login_type", session.getAttribute("login_type"));
-		logger.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@ model = " + model);
+		//model.addAttribute("login_type", modelMap.get("login_type"));
 		return "/notice/noticeList";
 	}
 	
@@ -78,14 +66,14 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/insert")
-	public String noticeInsert(Model model, HttpSession session) throws Exception {
-		model.addAttribute("user", session.getAttribute("user")); 
+	public String noticeInsert(Model model) throws Exception {
 		return "/notice/noticeInsert";
 	}
 	
 	@RequestMapping(value = "/insertProc.json", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> noticeInsertProc(Model model, @ModelAttribute Notice notice) throws Exception {
+		noticeService.setNoticeUserInfo(model, notice);
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		try {

@@ -18,8 +18,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.blueRibbon.login.model.KakaoUser;
 import com.blueRibbon.notice.model.NoticeFile;
 
 @Service
@@ -175,4 +177,17 @@ public class CommonService {
     		throw new Exception("이미지 업로드는 10MB까지 가능합니다.");
     	}
     }
+    
+	public Map<String, String> getUser(Object user) throws Exception {
+		Map<String, String> userMap = new HashMap<String, String>();
+		
+		if(user instanceof KakaoUser) {
+			KakaoUser kakaoUser = (KakaoUser) user;
+			userMap.put("userId", kakaoUser.getUserId());
+			userMap.put("userName", kakaoUser.getNickname());
+			userMap.put("authority", kakaoUser.getAuthority());
+		}
+
+		return userMap;
+	}
 }

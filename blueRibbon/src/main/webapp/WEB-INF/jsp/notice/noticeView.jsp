@@ -36,7 +36,7 @@
                 	<div class="row">
 						<label for="userId" class="col-sm-3 col-form-label">글쓴이</label>
 						<div class="col-sm-6">
-							<input type="text" id="userId" name="userId" class="form-control" value="${view.userId}" readonly="readonly"/>
+							<input type="text" id="userName" name="userName" class="form-control" value="${view.userName}" readonly="readonly"/>
 						</div>
 					</div>
 				</div>

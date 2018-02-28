@@ -34,7 +34,7 @@
 					<div class="row">
 						<label for="userId" class="col-sm-3 col-form-label">글쓴이</label>
 						<div class="col-sm-6">
-							<input type="text" id="userId" name="userId" class="form-control form-control-sm" value="${user.nickname}" readonly="readonly"/>
+							<input type="text" id="userName" name="userName" class="form-control form-control-sm" value="${user.userName}" readonly="readonly"/>
 						</div>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 				</div>
 			</div>
 			<div class="text-right" style="margin-bottom: 20px; margin-top: 20px;">
-				<a href="#" id="insertBtn" class="btn btn-primary">등록</a>
+				<a href="#" id="insertBtn" class="btn btn-primary btn-sm">등록</a>
 			</div>
 		</div>
 	</div>

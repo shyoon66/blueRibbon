@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.blueRibbon.notice.dao.NoticeDao;
 import com.blueRibbon.notice.model.Notice;
@@ -161,6 +162,14 @@ public class NoticeService {
 		if("".equals(contents) || contents == null) {
 			throw new Exception("내용을 입력해 주세요.");
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void setNoticeUserInfo(Model model, Notice notice) throws Exception {
+		Map<String, Object> modelMap = model.asMap();
+		Map<String, String> userMap = (Map<String, String>) modelMap.get("user");		
+		notice.setUserId(userMap.get("userId"));
+		notice.setUserName(userMap.get("userName"));
 	}
 
 }

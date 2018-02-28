@@ -59,7 +59,7 @@
 									<tr class="row">
 										<td class="text-center col-sm-1">${((view.page + 1) * view.pageSize) - (view.pageSize - status.index) + 1}</td>
 										<td class="col-sm-7"><a href="${urlNoticeView}?noticeId=${notice.noticeId}&page=${view.page}&size=${view.pageSize}&sort=createDt,desc" class="notice-title">${notice.title}</a></td>
-										<td class="text-center col-sm-2">${notice.userId}</td>
+										<td class="text-center col-sm-2">${notice.userName}</td>
 										<td class="text-center col-sm-2">${notice.createDt}</td>
 									</tr>
 								</c:forEach>
@@ -74,9 +74,9 @@
 					</c:choose>
  				</div>
 			</div>
-			<!-- <hr> -->
 			
 			<div style="margin-top: 40px;">
+				<hr>
 				<c:if test="${user.authority eq 'A'}">
 					<a href="#" id="insertBtn" class="btn btn-primary btn-sm" style="float: right;">글쓰기</a>
 				</c:if>		
